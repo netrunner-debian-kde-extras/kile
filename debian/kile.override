@@ -1,2 +1,0 @@
-# Lintian has yet to catch up with the menu transition to /usr/share/.
-kile: postinst-has-useless-call-to-update-menus

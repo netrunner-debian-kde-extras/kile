@@ -1,8 +1,8 @@
-usr/bin
-usr/share/applications
+usr/bin/kile
+usr/share/applications/kde/kile.desktop
 usr/share/apps/kconf_update
 usr/share/apps/kile
-usr/share/config.kcfg
+usr/share/config.kcfg/kile.kcfg
 usr/share/doc/kde/HTML/en/kile
 usr/share/icons
-usr/share/mimelnk
+usr/share/mimelnk/text/x-kilepr.desktop

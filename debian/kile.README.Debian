@@ -1,8 +1,0 @@
-Kile for Debian
----------------
-
-Kile no longer comes with a Gnuplot front end.  The Gnuplot front end that
-used to be part of Kile is now a separate application Qgfe maintained by
-Pascal Brachet at http://www.xm1math.net/qgfe/ .
-
- -- Ben Burton <bab@debian.org>, Sat, 23 Oct 2004 12:56:57 +1000

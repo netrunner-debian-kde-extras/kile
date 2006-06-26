@@ -1,3 +1,30 @@
+kile (1:1.9.1-1) unstable; urgency=low
+
+  * New maintainers with ben agreement
+    * Maintainer: KDE Extras Team
+    * Uploaders: Fathi Boudra and Mark Purcell
+  * New upstream release (Closes: #337550, #358250, #358857, #276348, #221898,
+    #285035)
+  * Converted package to cdbs
+  * compat: bumped to 5
+  * control:
+    * removed unneeded Build-depends: libqt3-compat-headers and g++-3.4
+      (Closes: #342995)
+    * bumped Standards-Version to 3.7.2
+    * added texlive-base-bin in Depends (Closes: #372191)
+    * added Homepage in long description
+  * copyright:
+    * added missing copyright for kile grep dialog, plain to latex converter,
+      quick document dialog, stats dialog, and create package script
+  * docs: merged kile.docs and kile-i18n.docs
+  * kile-i18n.install: added es documentation
+  * kile.manpages: removed, replaced by an entry in rules
+  * kile.menu: renamed to menu
+  * README.Debian: merged kile.README.Debian and kile-i18n.README.Debian
+  * Added watch file
+
+ -- Fathi Boudra <fboudra@free.fr>  Sun, 25 Jun 2006 10:58:50 +0200
+
 kile (1:1.8.1-3.2) unstable; urgency=low
 
   * Non-maintainer upload with maintainer's consent.
@@ -251,6 +278,3 @@ ktexmaker2 (1.5-1) unstable; urgency=low
 
  -- Ben Burton <benb@acm.org>  Sun, 16 Sep 2001 15:09:22 -0500
 
-Local variables:
-mode: debian-changelog
-End:
