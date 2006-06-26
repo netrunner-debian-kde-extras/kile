@@ -3,7 +3,7 @@ Section: tex
 Priority: optional
 Maintainer: Debian KDE Extras Team <pkg-kde-extras@lists.alioth.debian.org>
 Uploaders: Fathi Boudra <fboudra@free.fr>, Mark Purcell <msp@debian.org>, Ana Beatriz Guerrero Lopez <ana@ekaia.org>
-Build-Depends: cdbs, debhelper (>= 5), automake1.9, kdelibs4-dev, libtool
+Build-Depends: cdbs, debhelper (>= 5), kdelibs4-dev, libtool, automake1.9, autoconf
 Standards-Version: 3.7.2
 
 Package: kile
@@ -15,8 +15,7 @@ Suggests: gbib, latex2html, pybliographer, xfig, kile-i18n
 Conflicts: ktexmaker2 (<< 1.8)
 Replaces: ktexmaker2 (<< 1.8)
 Description: KDE Integrated LaTeX Environment
- Kile (the KDE Integrated LaTeX Environment) is a user-friendly LaTeX source
- editor and TeX shell for KDE.
+ Kile is a user-friendly LaTeX source editor and TeX shell for KDE.
  .
  The source editor is a multi-document editor designed for .tex and .bib
  files.  Menus, wizards and auto-completion are provided to assist with

@@ -24,7 +24,7 @@ kile (1:1.9.1-1) unstable; urgency=low
   * README.Debian: merged kile.README.Debian and kile-i18n.README.Debian
   * Added watch file
 
-  [ana Beatriz Guerrero Lopez]
+  [Ana Beatriz Guerrero Lopez]
   * re-libtoolizing at build time, so now the package doesn't depend from
     libfreetype6 and other spurious libraries.
 
