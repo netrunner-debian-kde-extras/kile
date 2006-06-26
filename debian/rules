@@ -6,7 +6,20 @@ include /usr/share/cdbs/1/class/kde.mk
 DEB_DH_INSTALL_ARGS = --sourcedir=debian/tmp
 DEB_INSTALL_MANPAGES_kile := debian/kile.1
 
+makebuilddir/kile::
+	-test -r /usr/share/misc/config.sub && \
+	cp -f /usr/share/misc/config.sub admin/config.sub
+	-test -r /usr/share/misc/config.guess && \
+	cp -f /usr/share/misc/config.guess admin/config.guess
+
+	/usr/bin/libtoolize -f
+	cp -f /usr/share/aclocal/libtool.m4 admin/libtool.m4.in
+	$(MAKE) -f admin/Makefile.common
+
 install/kile::
 	# Install pixmap
 	install -D -p -m0644 debian/kile.xpm debian/kile/usr/share/pixmaps/kile.xpm
+
+clean::
+	rm -f admin/config.sub admin/config.guess debian/debiandirs admin/ltmain.sh configure admin/libtool.m4.in aclocal.m4 acinclude.m4
 
