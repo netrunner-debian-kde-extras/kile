@@ -1,8 +1,9 @@
 kile (1:1.9.1-1) unstable; urgency=low
 
+  [Fathi Boudra]
   * New maintainers with Ben's agreement
     * Maintainer: KDE Extras Team
-    * Uploaders: Fathi Boudra and Mark Purcell
+    * Uploaders: Ana Beatriz Guerrero Lopez, Mark Purcell and Fathi Boudra
   * New upstream release (Closes: #337550, #358250, #358857, #276348, #221898,
     #285035)
   * Converted package to cdbs
@@ -21,7 +22,9 @@ kile (1:1.9.1-1) unstable; urgency=low
   * kile.manpages: removed, replaced by an entry in rules
   * kile.menu: renamed to menu
   * README.Debian: merged kile.README.Debian and kile-i18n.README.Debian
-  * Added watch file.
+  * Added watch file
+
+  [ana Beatriz Guerrero Lopez]
   * re-libtoolizing at build time, so now the package doesn't depend from
     libfreetype6 and other spurious libraries.
 
