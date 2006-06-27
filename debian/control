@@ -3,7 +3,7 @@ Section: tex
 Priority: optional
 Maintainer: Debian KDE Extras Team <pkg-kde-extras@lists.alioth.debian.org>
 Uploaders: Fathi Boudra <fboudra@free.fr>, Mark Purcell <msp@debian.org>, Ana Beatriz Guerrero Lopez <ana@ekaia.org>
-Build-Depends: cdbs, debhelper (>= 5), kdelibs4-dev, libtool, automake1.9, autoconf
+Build-Depends: cdbs, debhelper (>= 5), automake1.9, kdelibs4-dev, libtool
 Standards-Version: 3.7.2
 
 Package: kile
@@ -36,8 +36,9 @@ Section: tex
 Depends: kile (= ${Source-Version})
 Replaces: kile (<< 1:1.7.1)
 Description: translations for Kile, the KDE Integrated LaTeX Environment
- Kile (the KDE Integrated LaTeX Environment) is a user-friendly LaTeX source
- editor and TeX shell for KDE. See the kile package for further information.
+ Kile is a user-friendly LaTeX source editor and TeX shell for KDE.
+ .
+ See the kile package for further information.
  .
  This package contains translations for Kile into several different
  languages.

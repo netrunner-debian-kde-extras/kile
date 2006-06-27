@@ -1,6 +1,6 @@
 kile (1:1.9.1-1) unstable; urgency=low
 
-  [Fathi Boudra]
+ [Fathi Boudra]
   * New maintainers with Ben's agreement
     * Maintainer: KDE Extras Team
     * Uploaders: Ana Beatriz Guerrero Lopez, Mark Purcell and Fathi Boudra
@@ -24,9 +24,12 @@ kile (1:1.9.1-1) unstable; urgency=low
   * README.Debian: merged kile.README.Debian and kile-i18n.README.Debian
   * Added watch file
 
-  [Ana Beatriz Guerrero Lopez]
+ [Ana Beatriz Guerrero Lopez]
   * re-libtoolizing at build time, so now the package doesn't depend from
     libfreetype6 and other spurious libraries.
+  * removed kile.doc-base
+  * fixed perms of runTests.sh
+  * cosmetic changes in long description
 
  -- Fathi Boudra <fboudra@free.fr>  Sun, 25 Jun 2006 10:58:50 +0200
 

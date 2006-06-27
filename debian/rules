@@ -19,7 +19,7 @@ makebuilddir/kile::
 install/kile::
 	# Install pixmap
 	install -D -p -m0644 debian/kile.xpm debian/kile/usr/share/pixmaps/kile.xpm
-	
+
 	chmod +x  debian/tmp/usr/share/apps/kile/test/runTests.sh
 
 clean::
