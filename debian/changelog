@@ -1,8 +1,13 @@
 kile (1:1.9.1-2) unstable; urgency=low
 
+  [Mark Purcell]
   * Update debian/watch
 
- -- Mark Purcell <msp@debian.org>  Fri, 28 Jul 2006 21:16:25 +0100
+  [Ana Beatriz Guerrero Lopez]
+  * Dropping re-libtoolizing at build time, instead updating libtool
+    with a patch. (Closes: #379827).
+
+ -- Ana Beatriz Guerrero Lopez <ana@ekaia.org>  Fri, 28 Jul 2006 22:20:06 +0200
 
 kile (1:1.9.1-1) unstable; urgency=low
 
