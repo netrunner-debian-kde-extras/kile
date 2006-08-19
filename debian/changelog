@@ -1,3 +1,10 @@
+kile (1:1.9.2-1) unstable; urgency=low
+
+  [Fathi Boudra]
+  * New upstream release NOT RELEASED (Closes: #337550, #382317)
+
+ -- Fathi Boudra <fboudra@free.fr>  Sat, 19 Aug 2006 15:45:38 +0200
+
 kile (1:1.9.1-2) unstable; urgency=low
 
   [Mark Purcell]
