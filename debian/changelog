@@ -1,7 +1,10 @@
 kile (1:1.9.2-1) unstable; urgency=low
 
+  NOT RELEASED
   [Fathi Boudra]
-  * New upstream release NOT RELEASED (Closes: #337550, #382317)
+  * New upstream release (Closes: #319409, #337550, #359932, #382317)
+  * Install latex.xml and bibtex.xml provided by kile package instead of
+    kdelibs-data (Closes: #358863)
 
  -- Fathi Boudra <fboudra@free.fr>  Sat, 19 Aug 2006 15:45:38 +0200
 
