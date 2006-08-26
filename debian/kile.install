@@ -2,8 +2,6 @@ usr/bin/kile
 usr/share/applications/kde/kile.desktop
 usr/share/apps/kconf_update
 usr/share/apps/kile
-usr/share/apps/katepart/syntax/bibtex.xml
-usr/share/apps/katepart/syntax/latex.xml
 usr/share/config.kcfg/kile.kcfg
 usr/share/doc/kde/HTML/en/kile
 usr/share/icons
