@@ -1,10 +1,15 @@
-kile (1:1.9.2-1) unstable; urgency=low
+kile (1:1.9.2-2) unstable; urgency=low
 
-  NOT RELEASED
-  [Fathi Boudra]
-  * New upstream release (Closes: #319409, #337550, #359932, #382317)
+  * TODO confirm #319409 resolution 
   * Add script to keep bibtex.xml and latex.xml up-to-date in kdelibs-data
     (Closes: #358863)
+
+ -- Fathi Boudra <fboudra@free.fr>  Sun, 27 Aug 2006 20:03:54 +0200
+
+kile (1:1.9.2-1) unstable; urgency=low
+
+  [Fathi Boudra]
+  * New upstream release (Closes: #337550, #359932, #382317)
 
  -- Fathi Boudra <fboudra@free.fr>  Sat, 19 Aug 2006 15:45:38 +0200
 

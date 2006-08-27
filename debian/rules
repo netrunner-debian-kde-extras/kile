@@ -7,11 +7,9 @@ include /usr/share/cdbs/1/rules/simple-patchsys.mk
 DEB_DH_INSTALL_ARGS = --sourcedir=debian/tmp
 DEB_INSTALL_MANPAGES_kile := debian/kile.1
 
-
 install/kile::
 	# Install pixmap
 	install -D -p -m0644 debian/kile.xpm debian/kile/usr/share/pixmaps/kile.xpm
 
 	chmod +x  debian/tmp/usr/share/apps/kile/test/runTests.sh
-
 
