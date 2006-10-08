@@ -13,3 +13,9 @@ install/kile::
 
 	chmod +x  debian/tmp/usr/share/apps/kile/test/runTests.sh
 
+
+get-orig-source:
+	 @@dh_testdir
+	 @@[ -d ../tarballs/. ]
+	 @@dpatch-get-origtargz ../tarballs
+
