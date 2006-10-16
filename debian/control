@@ -33,7 +33,7 @@ Description: KDE Integrated LaTeX Environment
 Package: kile-i18n
 Architecture: all
 Section: tex
-Depends: kile (= ${Source-Version})
+Depends: kile (>= ${source:Version})
 Replaces: kile (<< 1:1.7.1)
 Description: translations for Kile, the KDE Integrated LaTeX Environment
  Kile is a user-friendly LaTeX source editor and TeX shell for KDE.
