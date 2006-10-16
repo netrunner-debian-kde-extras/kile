@@ -1,10 +1,9 @@
 kile (1:1.9.2-2) unstable; urgency=low
 
-  * TODO confirm #319409 resolution 
-  * Add script to keep bibtex.xml and latex.xml up-to-date in kdelibs-data
-    (Closes: #358863)
+  [Fathi Boudra]
+  * Fix tex help path. Thanks to Thomas Braun (Closes: #359872)
 
- -- Fathi Boudra <fboudra@free.fr>  Sun, 27 Aug 2006 20:03:54 +0200
+ -- Fathi Boudra <fboudra@free.fr>  Mon, 16 Oct 2006 15:35:17 +0200
 
 kile (1:1.9.2-1) unstable; urgency=low
 

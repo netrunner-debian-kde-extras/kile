@@ -1,0 +1,12 @@
+diff -Nur kile-1.9.2/src/kile/kile.kcfg kile-1.9.2.new/src/kile/kile.kcfg
+--- kile-1.9.2/src/kile/kile.kcfg	2006-05-07 23:44:53.000000000 +0200
++++ kile-1.9.2.new/src/kile/kile.kcfg	2006-10-16 15:40:14.000000000 +0200
+@@ -203,7 +203,7 @@
+ 	<group name="Help">
+ 		<entry name="location" type="String">
+ 			<label>Location of the TeX documentation.</label>
+-			<default>/usr/share/texmf/doc</default>
++			<default>/usr/share/doc/tetex-doc</default>
+ 		</entry>
+ 		<entry name="use" type="Int">
+ 			<label>Use the system's TeX reference for the contextual help.</label>
