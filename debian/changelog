@@ -1,3 +1,11 @@
+kile (1:1.9.2-3) UNRELEASED; urgency=low
+
+  * TODO confirm #319409 resolution
+  * Add script to keep bibtex.xml and latex.xml up-to-date in kdelibs-data
+    (Closes: #358863)
+
+ -- Fathi Boudra <fboudra@free.fr>  Mon, 16 Oct 2006 15:47:24 +0200
+
 kile (1:1.9.2-2) unstable; urgency=low
 
   [Fathi Boudra]
