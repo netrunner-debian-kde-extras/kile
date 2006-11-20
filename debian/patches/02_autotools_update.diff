@@ -1,6 +1,6 @@
 diff -Nrua a/admin/install-sh b/admin/install-sh
---- a/admin/install-sh	2006-05-07 23:44:40.000000000 +0200
-+++ b/admin/install-sh	2006-08-27 19:35:52.000000000 +0200
+--- a/admin/install-sh	2006-11-18 20:54:42.000000000 +0100
++++ b/admin/install-sh	2006-11-20 10:40:38.000000000 +0100
 @@ -1,7 +1,7 @@
  #!/bin/sh
  # install - install a program, script, or datafile
@@ -291,8 +291,8 @@ diff -Nrua a/admin/install-sh b/admin/install-sh
  # eval: (add-hook 'write-file-hooks 'time-stamp)
  # time-stamp-start: "scriptversion="
 diff -Nrua a/admin/missing b/admin/missing
---- a/admin/missing	2006-05-07 23:44:40.000000000 +0200
-+++ b/admin/missing	2006-08-27 19:35:52.000000000 +0200
+--- a/admin/missing	2006-11-18 20:54:42.000000000 +0100
++++ b/admin/missing	2006-11-20 10:40:38.000000000 +0100
 @@ -1,9 +1,9 @@
  #! /bin/sh
  # Common stub for a few missing GNU programs while installing.
