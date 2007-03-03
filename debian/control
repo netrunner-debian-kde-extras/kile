@@ -11,7 +11,7 @@ Architecture: any
 Section: tex
 Depends: ${shlibs:Depends}, konsole, tetex-bin | texlive-base-bin
 Recommends: tetex-extra, tetex-doc, kdvi, kghostview
-Suggests: gbib, latex2html, pybliographer, xfig, kile-i18n
+Suggests: gbib, latex2html, pybliographer, xfig, kile-i18n, gv, kpdf
 Conflicts: ktexmaker2 (<< 1.8)
 Replaces: ktexmaker2 (<< 1.8)
 Description: KDE Integrated LaTeX Environment
