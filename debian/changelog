@@ -1,12 +1,15 @@
 kile (1:1.9.3-2) UNRELEASED; urgency=low
- 
+
   * NOT RELEASED YET
 
   * Suggest: kpdf, gv (Closes: #408824)
     - kile: Kile should suggest/recommend kpdf and gv
   * Basic get-orig-source target
+  * Apply fifo-in-tmp patch from Thomas Braun
+    - kile becomes CPU hog when "Let Kile process LyX..." is checked in
+    config (Closes: #406470)
 
- -- Mark Purcell <msp@debian.org>  Sat,  3 Mar 2007 18:36:54 +0000
+ -- Mark Purcell <msp@debian.org>  Thu, 22 Mar 2007 21:44:38 +0000
 
 kile (1:1.9.3-1) unstable; urgency=low
 
