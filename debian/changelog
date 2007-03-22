@@ -1,6 +1,4 @@
-kile (1:1.9.3-2) UNRELEASED; urgency=low
-
-  * NOT RELEASED YET
+kile (1:1.9.3-2) unstable; urgency=low
 
   * Suggest: kpdf, gv (Closes: #408824)
     - kile: Kile should suggest/recommend kpdf and gv
@@ -9,7 +7,7 @@ kile (1:1.9.3-2) UNRELEASED; urgency=low
     - kile becomes CPU hog when "Let Kile process LyX..." is checked in
     config (Closes: #406470)
 
- -- Mark Purcell <msp@debian.org>  Thu, 22 Mar 2007 21:44:38 +0000
+ -- Mark Purcell <msp@debian.org>  Thu, 22 Mar 2007 22:02:39 +0000
 
 kile (1:1.9.3-1) unstable; urgency=low
 
