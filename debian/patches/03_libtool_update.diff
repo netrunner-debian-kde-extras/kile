@@ -1,6 +1,6 @@
 diff -Nrua a/admin/libtool.m4.in b/admin/libtool.m4.in
---- a/admin/libtool.m4.in	2006-11-18 20:54:41.000000000 +0100
-+++ b/admin/libtool.m4.in	2006-11-20 10:40:37.000000000 +0100
+--- a/admin/libtool.m4.in	2006-11-20 10:23:19.000000000 +0100
++++ b/admin/libtool.m4.in	2007-05-26 13:39:44.000000000 +0200
 @@ -1,28 +1,13 @@
  # libtool.m4 - Configure libtool for the host system. -*-Autoconf-*-
 -## Copyright 1996, 1997, 1998, 1999, 2000, 2001
@@ -3795,8 +3795,8 @@ diff -Nrua a/admin/libtool.m4.in b/admin/libtool.m4.in
    lt_ac_count=0
    echo $ECHO_N "0123456789$ECHO_C" >conftest.in
 diff -Nrua a/admin/ltmain.sh b/admin/ltmain.sh
---- a/admin/ltmain.sh	2006-11-18 20:54:42.000000000 +0100
-+++ b/admin/ltmain.sh	2006-11-20 10:40:38.000000000 +0100
+--- a/admin/ltmain.sh	2006-11-20 10:23:18.000000000 +0100
++++ b/admin/ltmain.sh	2007-05-26 13:39:44.000000000 +0200
 @@ -1,7 +1,7 @@
  # ltmain.sh - Provide generalized library-building support services.
  # NOTE: Changing this file will not affect anything until you rerun configure.

@@ -8,13 +8,35 @@ include /usr/share/cdbs/1/rules/utils.mk
 DEB_DH_INSTALL_ARGS = --sourcedir=debian/tmp
 DEB_INSTALL_MANPAGES_kile := debian/kile.1
 
+install/kile-i18n-br::
+	-for language in `cd translations; ls -1d */`; do \
+		cd $(CURDIR)/$(DEB_BUILDDIR)/translations/$$language; \
+		$(MAKE) install DESTDIR=$(CURDIR)/debian/kile-i18n-$$language; \
+	done
+
+	cd $(CURDIR)/$(DEB_BUILDDIR)/translations/en_GB/; \
+	$(MAKE) install DESTDIR=$(CURDIR)/debian/kile-i18n-engb
+
+	cd $(CURDIR)/$(DEB_BUILDDIR)/translations/pt_BR/; \
+	$(MAKE) install DESTDIR=$(CURDIR)/debian/kile-i18n-ptbr
+
+	cd $(CURDIR)/$(DEB_BUILDDIR)/translations/sr@Latn/;\
+	$(MAKE) install DESTDIR=$(CURDIR)/debian/kile-i18n-srlatin
+
+	cd $(CURDIR)/$(DEB_BUILDDIR)/translations/zh_CN/; \
+	$(MAKE) install DESTDIR=$(CURDIR)/debian/kile-i18n-zhcn
+
 install/kile::
 	# Install pixmap
 	install -D -p -m0644 debian/kile.xpm debian/kile/usr/share/pixmaps/kile.xpm
 
-	chmod +x  debian/tmp/usr/share/apps/kile/test/runTests.sh
+	chmod +x debian/tmp/usr/share/apps/kile/test/runTests.sh
+
+clean::
+	rm -rf debian/kile-i18n-*
 
 get-orig-source:
 	@@dh_testdir
 	@@[ -d ../tarballs/. ]
 	@@dpatch-get-origtargz ../tarballs
+

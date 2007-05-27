@@ -1,0 +1,705 @@
+diff -Nur kile-1.9.3/src/kile/kilespell2.cpp kile-1.9.3.new/src/kile/kilespell2.cpp
+--- kile-1.9.3/src/kile/kilespell2.cpp	2006-11-20 10:23:18.000000000 +0100
++++ kile-1.9.3.new/src/kile/kilespell2.cpp	1970-01-01 01:00:00.000000000 +0100
+@@ -1,155 +0,0 @@
+-//
+-// C++ Implementation: kilespell
+-//
+-// Description:
+-//
+-//
+-// Author: Jeroen Wijnhout <Jeroen.Wijnhout@kdemail.net>, (C) 2004
+-//
+-/***************************************************************************
+- *                                                                         *
+- *   This program is free software; you can redistribute it and/or modify  *
+- *   it under the terms of the GNU General Public License as published by  *
+- *   the Free Software Foundation; either version 2 of the License, or     *
+- *   (at your option) any later version.                                   *
+- *                                                                         *
+- ***************************************************************************/
+-
+-#include "kilespell2.h"
+-
+-#if KDE_VERSION >= KDE_MAKE_VERSION(3,2,90)
+-
+-#include <kspell2/dialog.h>
+-#include <kspell2/backgroundchecker.h>
+-#include <kspell2/broker.h>
+-#include "texfilter.h"
+-using namespace KSpell2;
+-
+-#include <kconfig.h>
+-#include <kate/document.h>
+-#include <kate/view.h>
+-#include <kdebug.h>
+-#include <klocale.h>
+-#include <kmessagebox.h>
+-
+-#include "kileviewmanager.h"
+-
+-KileSpell::KileSpell(QWidget *parent, KileInfo *info, const char *name) :
+-	QObject(parent, name),
+-	m_ki(info),
+-	m_parent(parent)
+-{
+-	m_broker = Broker::openBroker( KSharedConfig::openConfig( "kilerc" ) );
+-	m_checker = new BackgroundChecker( m_broker, this );
+-	TeXFilter *filter = new TeXFilter();
+-	filter->setSettings( m_broker->settings() );
+-	m_checker->setFilter( filter );
+-	m_dialog = 0;
+-}
+-
+-
+-KileSpell::~KileSpell()
+-{
+-}
+-
+-void KileSpell::spellcheck()
+-{
+-	kdDebug() <<"==KileSpell::spellcheck()==============" << endl;
+-
+-	if ( !m_ki->viewManager()->currentView() ) return;
+-
+-	if ( !m_dialog )
+-	{
+-		m_dialog = new Dialog( m_checker, m_parent, "spelling dialog" );
+-		connect (m_dialog, SIGNAL(done(const QString&)), SLOT(slotDone(const QString&)));
+-		connect (m_dialog, SIGNAL(misspelling(const QString&, int)), SLOT(slotMisspelling(const QString&, int)));
+-		connect (m_dialog, SIGNAL(replace(const QString&, int, const QString&)),
+-						 SLOT(slotCorrected(const QString&, int, const QString&)));
+-	}
+-
+-	Kate::View *view = m_ki->viewManager()->currentView();
+-
+-	m_spellCorrected = 0;
+-
+-	if ( view->getDoc()->hasSelection() )
+-	{
+-		m_dialog->setBuffer(view->getDoc()->selection());
+-		par_start = view->getDoc()->selStartLine();
+-		par_end =  view->getDoc()->selEndLine();
+-		index_start =  view->getDoc()->selStartCol();
+-		index_end =  view->getDoc()->selEndCol();
+-	}
+-	else
+-	{
+-		m_dialog->setBuffer(view->getDoc()->text());
+-		par_start=0;
+-		par_end=view->getDoc()->numLines()-1;
+-		index_start=0;
+-		index_end=view->getDoc()->textLine(par_end).length();
+-	}
+-
+-	m_dialog->show();
+-}
+-
+-void KileSpell::slotMisspelling (const QString & originalword, int pos)
+-{
+-	Kate::View *view = m_ki->viewManager()->currentView();
+-	if ( view == 0L ) return;
+-
+-	int l=par_start;
+-	int cnt=0;
+-	int col=0;
+-	int p=pos+index_start;
+-
+-	while ((cnt+view->getDoc()->lineLength(l)<=p) && (l < par_end))
+-	{
+-		cnt+=view->getDoc()->lineLength(l)+1;
+-		++l;
+-	}
+-
+-	col=p-cnt;
+-	view->setCursorPosition(l,col);
+-	view->getDoc()->setSelection( l,col,l,col+originalword.length());
+-}
+-
+-
+-void KileSpell::slotCorrected (const QString & originalword, int pos, const QString & newword)
+-{
+-	Kate::View *view = m_ki->viewManager()->currentView();
+-	if ( view == 0L ) return;
+-
+-	int l=par_start;
+-	int cnt=0;
+-	int col=0;
+-	int p=pos+index_start;
+-
+-	if( newword != originalword )
+-	{
+-		while ((cnt+view->getDoc()->lineLength(l)<=p) && (l < par_end))
+-		{
+-			cnt+=view->getDoc()->lineLength(l)+1;
+-			++l;
+-		}
+-
+-		col=p-cnt;
+-		view->setCursorPosition(l,col);
+-		view->getDoc()->setSelection( l,col,l,col+originalword.length());
+-		view->getDoc()->removeSelectedText();
+-		view->getDoc()->insertText( l,col,newword );
+-		view->getDoc()->setModified( true );
+-	}
+-
+-	view->getDoc()->clearSelection();
+-	++m_spellCorrected;
+-}
+-
+-void KileSpell::slotDone(const QString& /*newtext*/)
+-{
+-	m_ki->viewManager()->currentView()->getDoc()->clearSelection();
+-	KMessageBox::information(m_parent, i18n("Corrected 1 word.", "Corrected %n words.", m_spellCorrected),
+-                             i18n("Spell Checking Done"));
+-}
+-
+-#include "kilespell2.moc"
+-
+-#endif
+diff -Nur kile-1.9.3/src/kile/kilespell2.h kile-1.9.3.new/src/kile/kilespell2.h
+--- kile-1.9.3/src/kile/kilespell2.h	2006-11-20 10:23:18.000000000 +0100
++++ kile-1.9.3.new/src/kile/kilespell2.h	1970-01-01 01:00:00.000000000 +0100
+@@ -1,65 +0,0 @@
+-//
+-// C++ Interface: kilespell
+-//
+-// Description: 
+-//
+-//
+-// Author: Jeroen Wijnhout <Jeroen.Wijnhout@kdemail.net>, (C) 2004
+-//
+-/***************************************************************************
+- *                                                                         *
+- *   This program is free software; you can redistribute it and/or modify  *
+- *   it under the terms of the GNU General Public License as published by  *
+- *   the Free Software Foundation; either version 2 of the License, or     *
+- *   (at your option) any later version.                                   *
+- *                                                                         *
+- ***************************************************************************/
+-#ifndef KILESPELL2_H
+-#define KILESPELL2_H
+-
+-#include <kdeversion.h>
+-
+-#if KDE_VERSION >= KDE_MAKE_VERSION(3,3,0)
+-
+-#include <qobject.h>
+-#include <qwidget.h>
+-
+-#include <kspell2/broker.h>
+-namespace KSpell2 { class Dialog; class BackgroundChecker; }
+-
+-#include "kileinfo.h"
+-
+-/**
+-@author Jeroen Wijnhout
+-*/
+-class KileSpell : public QObject
+-{
+-	Q_OBJECT
+-
+-public:
+-	KileSpell(QWidget *parent, KileInfo *info = 0, const char *name = 0);
+-
+-	~KileSpell();
+-
+-public slots:
+-	void spellcheck();
+-
+-private slots:
+-	void slotDone (const QString&);
+-	void slotCorrected (const QString & originalword, int start, const QString & newword);
+-	void slotMisspelling (const QString & originalword, int pos);
+-
+-private:
+-	KileInfo					*m_ki;
+-	QWidget					*m_parent;
+-	int						m_spellCorrected;
+-	KSpell2::Broker::Ptr			m_broker;
+-	KSpell2::Dialog			*m_dialog;
+-	KSpell2::BackgroundChecker	*m_checker;
+-	int 						par_start, par_end, index_start, index_end;
+-};
+-
+-#endif
+-
+-#endif
+-
+diff -Nur kile-1.9.3/src/kile/kilespell.cpp kile-1.9.3.new/src/kile/kilespell.cpp
+--- kile-1.9.3/src/kile/kilespell.cpp	2006-11-20 10:23:18.000000000 +0100
++++ kile-1.9.3.new/src/kile/kilespell.cpp	1970-01-01 01:00:00.000000000 +0100
+@@ -1,163 +0,0 @@
+-//
+-// C++ Implementation: kilespell
+-//
+-// Description:
+-//
+-//
+-// Author: Jeroen Wijnhout <Jeroen.Wijnhout@kdemail.net>, (C) 2004
+-//
+-/***************************************************************************
+- *                                                                         *
+- *   This program is free software; you can redistribute it and/or modify  *
+- *   it under the terms of the GNU General Public License as published by  *
+- *   the Free Software Foundation; either version 2 of the License, or     *
+- *   (at your option) any later version.                                   *
+- *                                                                         *
+- ***************************************************************************/
+-#include "kilespell.h"
+-
+-#include <kspell.h>
+-#include <kconfig.h>
+-#include <kate/document.h>
+-#include <kate/view.h>
+-#include <kdebug.h>
+-#include <klocale.h>
+-#include <kmessagebox.h>
+-
+-#include "kileviewmanager.h"
+-
+-KileSpell::KileSpell(QWidget *parent, KileInfo *info, const char *name) :
+-	QObject(parent, name),
+-	m_ki(info),
+-	m_parent(parent)
+-{
+-	kspell = 0;
+-}
+-
+-
+-KileSpell::~KileSpell()
+-{
+-}
+-
+-void KileSpell::spellcheck()
+-{
+-	kdDebug() <<"==KileSpell::spellcheck()==============" << endl;
+-
+-	if ( !m_ki->viewManager()->currentView() ) return;
+-
+-	if ( kspell )
+-	{
+-		kdDebug() << "kspell wasn't deleted before!" << endl;
+-		delete kspell;
+-	}
+-
+-
+-	kspell = new KSpell(m_parent, i18n("Spellcheck"), this,SLOT( spell_started(KSpell *)), 0, true, false, KSpell::TeX);
+-
+-	ks_corrected=0;
+-	connect (kspell, SIGNAL ( death()),this, SLOT ( spell_finished( )));
+-// 	connect (kspell, SIGNAL (progress (unsigned int)),this, SLOT (spell_progress (unsigned int)));
+-	connect (kspell, SIGNAL (misspelling (const QString & , const QStringList & , unsigned int )),this, SLOT (misspelling (const QString & , const QStringList & , unsigned int )));
+-	connect (kspell, SIGNAL (corrected (const QString & , const QString & , unsigned int )),this, SLOT (corrected (const QString & , const QString & , unsigned int )));
+-	connect (kspell, SIGNAL (done(const QString&)), this, SLOT (spell_done(const QString&)));
+-}
+-
+-void KileSpell::spell_started( KSpell *)
+-{
+-	kspell->setProgressResolution(2);
+-	Kate::View *view = m_ki->viewManager()->currentView();
+-
+-	if ( view->getDoc()->hasSelection() )
+-	{
+-		kspell->check(view->getDoc()->selection());
+-		par_start = view->getDoc()->selStartLine();
+-		par_end =  view->getDoc()->selEndLine();
+-		index_start =  view->getDoc()->selStartCol();
+-		index_end =  view->getDoc()->selEndCol();
+-	}
+-	else
+-	{
+-		kspell->check(view->getDoc()->text());
+-		par_start=0;
+-		par_end=view->getDoc()->numLines()-1;
+-		index_start=0;
+-		index_end=view->getDoc()->textLine(par_end).length();
+-	}
+-}
+-
+-void KileSpell::spell_done(const QString& /*newtext*/)
+-{
+-	m_ki->viewManager()->currentView()->getDoc()->clearSelection();
+-	kspell->cleanUp();
+-	KMessageBox::information(m_parent, i18n("Corrected 1 word.", "Corrected %n words", ks_corrected),
+-                             i18n("Spell Checking Done"));
+-}
+-
+-void KileSpell::spell_finished( )
+-{
+-	KSpell::spellStatus status = kspell->status();
+-
+-	delete kspell;
+-	kspell = 0;
+-	if (status == KSpell::Error)
+-		KMessageBox::sorry(m_parent, i18n("I(A)Spell could not be started."));
+-	else if (status == KSpell::Crashed)
+-	{
+-		m_ki->viewManager()->currentView()->getDoc()->clearSelection();
+-		KMessageBox::sorry(m_parent, i18n("I(A)Spell seems to have crashed."));
+-	}
+-}
+-
+-void KileSpell::misspelling (const QString & originalword, const QStringList & /*suggestions*/,unsigned int pos)
+-{
+-	Kate::View *view = m_ki->viewManager()->currentView();
+-	if ( view == 0L ) return;
+-
+-	int l=par_start;
+-	int cnt=0;
+-	int col=0;
+-	int p=pos+index_start;
+-
+-	while ((cnt+view->getDoc()->lineLength(l)<=p) && (l < par_end))
+-	{
+-		cnt+=view->getDoc()->lineLength(l)+1;
+-		++l;
+-	}
+-
+-	col=p-cnt;
+-	view->setCursorPosition(l,col);
+-	view->getDoc()->setSelection( l,col,l,col+originalword.length());
+-}
+-
+-
+-void KileSpell::corrected (const QString & originalword, const QString & newword, unsigned int pos)
+-{
+-	Kate::View *view = m_ki->viewManager()->currentView();
+-	if ( view == 0L ) return;
+-
+-	int l=par_start;
+-	int cnt=0;
+-	int col=0;
+-	int p=pos+index_start;
+-
+-	if( newword != originalword )
+-	{
+-		while ((cnt+view->getDoc()->lineLength(l)<=p) && (l < par_end))
+-		{
+-			cnt+=view->getDoc()->lineLength(l)+1;
+-			++l;
+-		}
+-
+-		col=p-cnt;
+-		view->setCursorPosition(l,col);
+-		view->getDoc()->setSelection( l,col,l,col+originalword.length());
+-		view->getDoc()->removeSelectedText();
+-		view->getDoc()->insertText( l,col,newword );
+-		view->getDoc()->setModified( true );
+-	}
+-
+-	view->getDoc()->clearSelection();
+-	++ks_corrected;
+-}
+-
+-#include "kilespell.moc"
+diff -Nur kile-1.9.3/src/kile/kilespell.h kile-1.9.3.new/src/kile/kilespell.h
+--- kile-1.9.3/src/kile/kilespell.h	2006-11-20 10:23:18.000000000 +0100
++++ kile-1.9.3.new/src/kile/kilespell.h	1970-01-01 01:00:00.000000000 +0100
+@@ -1,61 +0,0 @@
+-//
+-// C++ Interface: kilespell
+-//
+-// Description: 
+-//
+-//
+-// Author: Jeroen Wijnhout <Jeroen.Wijnhout@kdemail.net>, (C) 2004
+-//
+-/***************************************************************************
+- *                                                                         *
+- *   This program is free software; you can redistribute it and/or modify  *
+- *   it under the terms of the GNU General Public License as published by  *
+- *   the Free Software Foundation; either version 2 of the License, or     *
+- *   (at your option) any later version.                                   *
+- *                                                                         *
+- ***************************************************************************/
+-#ifndef KILESPELL_H
+-#define KILESPELL_H
+-
+-#include <qobject.h>
+-#include <qwidget.h>
+-#include <kspell.h>
+-
+-#include "kileinfo.h"
+-
+-/**
+-@author Jeroen Wijnhout
+-*/
+-class KileSpell : public QObject
+-{
+-	Q_OBJECT
+-
+-public:
+-	KileSpell(QWidget *parent, KileInfo *info = 0, const char *name = 0);
+-
+-	~KileSpell();
+-
+-public slots:
+-	void spellcheck();
+-
+-private slots:
+-	void spell_started ( KSpell *);
+-	void spell_done(const QString&);
+-	void spell_finished();
+-	void corrected (const QString & originalword, const QString & newword, unsigned int pos);
+-	void misspelling (const QString & originalword, const QStringList & suggestions,unsigned int pos);
+-
+-private:
+-	KileInfo					*m_ki;
+-	QWidget					*m_parent;
+-	int						m_spellCorrected;
+-	KSpell 					*kspell;
+-	int 						ks_corrected;
+-	int 						par_start, par_end, index_start, index_end;
+-	QString 					spell_text;
+-
+-};
+-
+-#endif
+-
+-
+diff -Nur kile-1.9.3/src/kile/kile.cpp kile-1.9.3.new/src/kile/kile.cpp
+--- kile-1.9.3/src/kile/kile.cpp	2006-11-20 10:23:18.000000000 +0100
++++ kile-1.9.3.new/src/kile/kile.cpp	2007-05-26 14:34:25.000000000 +0200
+@@ -66,8 +66,6 @@
+ #include "kileconfig.h"
+ #include "kileerrorhandler.h"
+ #include "configcheckerdlg.h"
+-#include "kilespell.h"
+-//#include "kilespell2.h"
+ #include "kilesidebar.h"
+ #include "symbolview.h"
+ #include "floatdialog.h"
+@@ -106,7 +104,6 @@
+ 	m_partManager = new KParts::PartManager( this );
+ 	m_eventFilter = new KileEventFilter(m_edit);
+ 	m_errorHandler = new KileErrorHandler(this, this);
+-	m_spell = new KileSpell(this, this, "kilespell");
+ 	m_quickPreview = new KileTool::QuickPreview(this);
+ 
+ 	connect( m_partManager, SIGNAL( activePartChanged( KParts::Part * ) ), this, SLOT(activePartGUI ( KParts::Part * ) ) );
+@@ -380,9 +377,6 @@
+ 
+ 	(void) new KAction(i18n("Find &in Files..."), ALT+SHIFT+Key_F, this, SLOT(findInFiles()), actionCollection(),"FindInFiles" );
+ 
+-	kdDebug() << "CONNECTING SPELLCHECKER" << endl;
+-	connect ( viewManager(), SIGNAL(startSpellCheck()), m_spell, SLOT(spellcheck()) );
+-
+ 	(void) new KAction(i18n("Refresh Str&ucture"), "view_tree", Key_F12, this, SLOT(refreshStructure()), actionCollection(),"RefreshStructure" );
+ 
+ 	//project actions
+diff -Nur kile-1.9.3/src/kile/kile.h kile-1.9.3.new/src/kile/kile.h
+--- kile-1.9.3/src/kile/kile.h	2006-11-20 10:23:18.000000000 +0100
++++ kile-1.9.3.new/src/kile/kile.h	2007-05-26 14:34:55.000000000 +0200
+@@ -68,7 +68,6 @@
+ class KileProjectView;
+ class TemplateItem;
+ class KileAutoSaveJob;
+-class KileSpell;
+ class KileErrorHandler;
+ class KileSideBar;
+ 
+@@ -311,8 +310,7 @@
+ 
+ private:
+ 	KileErrorHandler 	*m_errorHandler;
+-	KileSpell			*m_spell;
+-	
++
+ // QuickPreview
+ private slots:
+ 	void quickPreviewSelection();    
+diff -Nur kile-1.9.3/src/kile/kileviewmanager.cpp kile-1.9.3.new/src/kile/kileviewmanager.cpp
+--- kile-1.9.3/src/kile/kileviewmanager.cpp	2006-11-20 10:23:18.000000000 +0100
++++ kile-1.9.3.new/src/kile/kileviewmanager.cpp	2007-05-26 14:32:59.000000000 +0200
+@@ -118,14 +118,6 @@
+ 	connect( view, SIGNAL(completionAborted()), m_ki->editorExtension()->complete(),  SLOT( slotCompletionAborted()) );
+ 	connect( view, SIGNAL(filterInsertString(KTextEditor::CompletionEntry*,QString *)), m_ki->editorExtension()->complete(),  SLOT(slotFilterCompletion(KTextEditor::CompletionEntry*,QString *)) );
+ 
+-	KAction *spa = view->actionCollection()->action( "tools_spelling" );
+-	if ( spa )
+-	{
+-		kdDebug() << "RECONNECTING SPELLCHECKER" << endl;
+-		disconnect(spa , 0 , 0 , 0);
+-		connect( spa, SIGNAL(activated()), this, SIGNAL(startSpellCheck()) );
+-	}
+-
+ 	// install a working kate part popup dialog thingy
+ 	Kate::View *kateView = static_cast<Kate::View*>(view->qt_cast("Kate::View"));
+ 	QPopupMenu *viewPopupMenu = (QPopupMenu*)(m_client->factory()->container("ktexteditor_popup", m_client));
+diff -Nur kile-1.9.3/src/kile/kileviewmanager.h kile-1.9.3.new/src/kile/kileviewmanager.h
+--- kile-1.9.3/src/kile/kileviewmanager.h	2006-11-20 10:23:18.000000000 +0100
++++ kile-1.9.3.new/src/kile/kileviewmanager.h	2007-05-26 14:33:06.000000000 +0200
+@@ -91,7 +91,6 @@
+ signals:
+ 	void activateView(QWidget *, bool);
+ 	void prepareForPart(const QString &);
+-	void startSpellCheck();
+ 
+ private:
+ 	KileInfo			*m_ki;
+diff -Nur kile-1.9.3/src/kile/Makefile.am kile-1.9.3.new/src/kile/Makefile.am
+--- kile-1.9.3/src/kile/Makefile.am	2007-05-26 14:36:01.000000000 +0200
++++ kile-1.9.3.new/src/kile/Makefile.am	2007-05-26 14:38:51.000000000 +0200
+@@ -18,7 +18,7 @@
+ 	codecompletion.cpp configcodecompletion.cpp kiletoolconfigwidget.cpp kileedit.cpp \
+ 	cleandialog.cpp kilehelp.cpp configstructure.cpp kileappIface.skel convert.cpp \
+ 	helpconfigwidget.ui kiledocmanager.cpp kileviewmanager.cpp kileeventfilter.cpp \
+-	latexconfigwidget.ui kileconfig.kcfgc generalconfigwidget.ui kilespell.cpp \
++	latexconfigwidget.ui kileconfig.kcfgc generalconfigwidget.ui \
+ 	kileerrorhandler.cpp configcheckerdlg.cpp configcheckerwidget.ui configtester.cpp \
+ 	kilesidebar.cpp toolconfigwidget.ui librarytoolconfigwidget.ui \
+ 	processtoolconfigwidget.ui quicktoolconfigwidget.ui plaintolatexconverter.cpp \
+@@ -93,7 +93,7 @@
+ noinst_HEADERS = kiletool.h kilelauncher.h kiletool_enums.h kiletoolmanager.h \
+ 		kilestdtools.h kilelogwidget.h kileoutputwidget.h kilekonsolewidget.h kilewizard.h \
+ 		kilestructurewidget.h convert.h kiledocmanager.h kileviewmanager.h kileeventfilter.h \
+-		latexconfigwidget.h kilespell.h kileerrorhandler.h configcheckerdlg.h configtester.h \
++		latexconfigwidget.h kileerrorhandler.h configcheckerdlg.h configtester.h \
+ 		kilesidebar.h plaintolatexconverter.h kileuntitled.h 	kilestatsdlg.h \
+ 	kilestatswidget.h envconfigwidget.h structureconfigwidget.h kileversion.h
+ 
+diff -Nur kile-1.9.3/src/kile/Makefile.in kile-1.9.3.new/src/kile/Makefile.in
+--- kile-1.9.3/src/kile/Makefile.in	2007-05-26 14:36:01.000000000 +0200
++++ kile-1.9.3.new/src/kile/Makefile.in	2007-05-26 14:38:30.000000000 +0200
+@@ -84,7 +84,7 @@
+ 	kileedit.$(OBJEXT) cleandialog.$(OBJEXT) kilehelp.$(OBJEXT) \
+ 	configstructure.$(OBJEXT) convert.$(OBJEXT) \
+ 	kiledocmanager.$(OBJEXT) kileviewmanager.$(OBJEXT) \
+-	kileeventfilter.$(OBJEXT) kilespell.$(OBJEXT) \
++	kileeventfilter.$(OBJEXT) \
+ 	kileerrorhandler.$(OBJEXT) configcheckerdlg.$(OBJEXT) \
+ 	configtester.$(OBJEXT) kilesidebar.$(OBJEXT) \
+ 	plaintolatexconverter.$(OBJEXT) kileuntitled.$(OBJEXT) \
+@@ -120,7 +120,7 @@
+ 	kileedit.$(OBJEXT) cleandialog.$(OBJEXT) kilehelp.$(OBJEXT) \
+ 	configstructure.$(OBJEXT) convert.$(OBJEXT) \
+ 	kiledocmanager.$(OBJEXT) kileviewmanager.$(OBJEXT) \
+-	kileeventfilter.$(OBJEXT) kilespell.$(OBJEXT) \
++	kileeventfilter.$(OBJEXT) \
+ 	kileerrorhandler.$(OBJEXT) configcheckerdlg.$(OBJEXT) \
+ 	configtester.$(OBJEXT) kilesidebar.$(OBJEXT) \
+ 	plaintolatexconverter.$(OBJEXT) kileuntitled.$(OBJEXT) \
+@@ -447,7 +447,7 @@
+ #>- 	codecompletion.cpp configcodecompletion.cpp kiletoolconfigwidget.cpp kileedit.cpp \
+ #>- 	cleandialog.cpp kilehelp.cpp configstructure.cpp kileappIface.skel convert.cpp \
+ #>- 	helpconfigwidget.ui kiledocmanager.cpp kileviewmanager.cpp kileeventfilter.cpp \
+-#>- 	latexconfigwidget.ui kileconfig.kcfgc generalconfigwidget.ui kilespell.cpp \
++#>- 	latexconfigwidget.ui kileconfig.kcfgc generalconfigwidget.ui \
+ #>- 	kileerrorhandler.cpp configcheckerdlg.cpp configcheckerwidget.ui configtester.cpp \
+ #>- 	kilesidebar.cpp toolconfigwidget.ui librarytoolconfigwidget.ui \
+ #>- 	processtoolconfigwidget.ui quicktoolconfigwidget.ui plaintolatexconverter.cpp \
+@@ -468,7 +468,6 @@
+ 	codecompletion.cpp configcodecompletion.cpp kiletoolconfigwidget.cpp kileedit.cpp \
+ 	cleandialog.cpp kilehelp.cpp configstructure.cpp  convert.cpp \
+ 	 kiledocmanager.cpp kileviewmanager.cpp kileeventfilter.cpp \
+-	   kilespell.cpp \
+ 	kileerrorhandler.cpp configcheckerdlg.cpp  configtester.cpp \
+ 	kilesidebar.cpp   \
+ 	  plaintolatexconverter.cpp \
+@@ -528,7 +527,7 @@
+ noinst_HEADERS = kiletool.h kilelauncher.h kiletool_enums.h kiletoolmanager.h \
+ 		kilestdtools.h kilelogwidget.h kileoutputwidget.h kilekonsolewidget.h kilewizard.h \
+ 		kilestructurewidget.h convert.h kiledocmanager.h kileviewmanager.h kileeventfilter.h \
+-		latexconfigwidget.h kilespell.h kileerrorhandler.h configcheckerdlg.h configtester.h \
++		latexconfigwidget.h kileerrorhandler.h configcheckerdlg.h configtester.h \
+ 		kilesidebar.h plaintolatexconverter.h kileuntitled.h 	kilestatsdlg.h \
+ 	kilestatswidget.h envconfigwidget.h structureconfigwidget.h kileversion.h
+ 
+@@ -651,7 +650,6 @@
+ @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/kileprojectdlgs.Po@am__quote@
+ @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/kileprojectview.Po@am__quote@
+ @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/kilesidebar.Po@am__quote@
+-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/kilespell.Po@am__quote@
+ @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/kilestatsdlg.Po@am__quote@
+ @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/kilestatswidget.Po@am__quote@
+ @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/kilestdactions.Po@am__quote@
+@@ -1203,13 +1201,6 @@
+ mocs: mathenvdialog.moc
+ 
+ #>+ 3
+-kilespell2.moc: $(srcdir)/kilespell2.h
+-	$(MOC) $(srcdir)/kilespell2.h -o kilespell2.moc
+-
+-#>+ 2
+-mocs: kilespell2.moc
+-
+-#>+ 3
+ usermenudialog.moc: $(srcdir)/usermenudialog.h
+ 	$(MOC) $(srcdir)/usermenudialog.h -o usermenudialog.moc
+ 
+@@ -1399,13 +1390,6 @@
+ mocs: kilegrepdialog.moc
+ 
+ #>+ 3
+-kilespell.moc: $(srcdir)/kilespell.h
+-	$(MOC) $(srcdir)/kilespell.h -o kilespell.moc
+-
+-#>+ 2
+-mocs: kilespell.moc
+-
+-#>+ 3
+ kilesidebar.moc: $(srcdir)/kilesidebar.h
+ 	$(MOC) $(srcdir)/kilesidebar.h -o kilesidebar.moc
+ 
+@@ -1463,10 +1447,10 @@
+ 
+ #>+ 3
+ clean-metasources:
+-	-rm -f  configcheckerdlg.moc kilefileselect.moc kilelogwidget.moc kileproject.moc userhelpdialog.moc codecompletion.moc kilekonsolewidget.moc kiletoolmanager.moc quickpreview.moc newfilewizard.moc configcodecompletion.moc kiletool.moc kile.moc tabulardialog.moc kileedit.moc kilelyxserver.moc latexcmd.moc kiledocmanager.moc mathenvdialog.moc kilespell2.moc usermenudialog.moc metapostview.moc kileactions.moc kilehelp.moc kileviewmanager.moc kileprojectdlgs.moc kilestructurewidget.moc kileprojectview.moc postscriptdialog.moc includegraphicsdialog.moc tabbingdialog.moc userhelp.moc configtester.moc cleandialog.moc configstructure.moc docpart.moc kiletoolconfigwidget.moc outputfilter.moc kileeventfilter.moc previewconfigwidget.moc floatdialog.moc kilestdtools.moc kiledocumentinfo.moc kilelauncher.moc kileconfigdialog.moc kileerrorhandler.moc kilegrepdialog.moc kilespell.moc kilesidebar.moc texdocdialog.moc latexcmddialog.moc managetemplatesdialog.moc kileoutputwidget.moc kilestatswidget.moc quickdocumentdialog.moc symbolview.moc
++	-rm -f  configcheckerdlg.moc kilefileselect.moc kilelogwidget.moc kileproject.moc userhelpdialog.moc codecompletion.moc kilekonsolewidget.moc kiletoolmanager.moc quickpreview.moc newfilewizard.moc configcodecompletion.moc kiletool.moc kile.moc tabulardialog.moc kileedit.moc kilelyxserver.moc latexcmd.moc kiledocmanager.moc mathenvdialog.moc usermenudialog.moc metapostview.moc kileactions.moc kilehelp.moc kileviewmanager.moc kileprojectdlgs.moc kilestructurewidget.moc kileprojectview.moc postscriptdialog.moc includegraphicsdialog.moc tabbingdialog.moc userhelp.moc configtester.moc cleandialog.moc configstructure.moc docpart.moc kiletoolconfigwidget.moc outputfilter.moc kileeventfilter.moc previewconfigwidget.moc floatdialog.moc kilestdtools.moc kiledocumentinfo.moc kilelauncher.moc kileconfigdialog.moc kileerrorhandler.moc kilegrepdialog.moc kilesidebar.moc texdocdialog.moc latexcmddialog.moc managetemplatesdialog.moc kileoutputwidget.moc kilestatswidget.moc quickdocumentdialog.moc symbolview.moc
+ 
+ #>+ 2
+-KDE_DIST=librarytoolconfigwidget.h kile.kcfg kile generalconfigwidget.ui configcheckerwidget.ui.h envconfigwidget.ui processtoolconfigwidget.h quicktoolconfigwidget.h kileappIface.kidl kiledocumentinfo.h toolsdesign.txt tips structureconfigwidget.ui helpconfigwidget.ui.h newtoolwizard.ui.h kileactions.h quicktoolconfigwidget.ui.h generalconfigwidget.h Makefile.in kileconfig.h latexcmd.h mathenvdialog.h tabulardialog.h latextoolconfigwidget.h processtoolconfigwidget.ui helpconfigwidget.ui toolconfigwidget.ui previewconfigwidget.h helpconfigwidget.h latextoolconfigwidget.ui userhelp.h newtoolwizard.ui librarytoolconfigwidget.ui kilespell2.h texdocdialog.h latexconfigwidget.ui.h configcheckerwidget.ui quickpreview.h kilespell2.cpp latexconfigwidget.ui userhelpdialog.h kileconfig.kcfgc quicktoolconfigwidget.ui newtoolwizard.h floatdialog.h toolconfigwidget.h kilestdtools.rc configcheckerwidget.h latexcmddialog.h postscriptdialog.h Makefile.am 
++KDE_DIST=librarytoolconfigwidget.h kile.kcfg kile generalconfigwidget.ui configcheckerwidget.ui.h envconfigwidget.ui processtoolconfigwidget.h quicktoolconfigwidget.h kileappIface.kidl kiledocumentinfo.h toolsdesign.txt tips structureconfigwidget.ui helpconfigwidget.ui.h newtoolwizard.ui.h kileactions.h quicktoolconfigwidget.ui.h generalconfigwidget.h Makefile.in kileconfig.h latexcmd.h mathenvdialog.h tabulardialog.h latextoolconfigwidget.h processtoolconfigwidget.ui helpconfigwidget.ui toolconfigwidget.ui previewconfigwidget.h helpconfigwidget.h latextoolconfigwidget.ui userhelp.h newtoolwizard.ui librarytoolconfigwidget.ui texdocdialog.h latexconfigwidget.ui.h configcheckerwidget.ui quickpreview.h latexconfigwidget.ui userhelpdialog.h kileconfig.kcfgc quicktoolconfigwidget.ui newtoolwizard.h floatdialog.h toolconfigwidget.h kilestdtools.rc configcheckerwidget.h latexcmddialog.h postscriptdialog.h Makefile.am 
+ 
+ #>+ 4
+ clean-idl:
+@@ -1536,11 +1520,11 @@
+ 
+ 
+ #>+ 11
+-kile.all_cpp.cpp: $(srcdir)/Makefile.in $(srcdir)/latexcmd.cpp $(srcdir)/latexcmddialog.cpp $(srcdir)/texdocdialog.cpp $(srcdir)/userhelp.cpp $(srcdir)/userhelpdialog.cpp $(srcdir)/floatdialog.cpp $(srcdir)/mathenvdialog.cpp $(srcdir)/tabulardialog.cpp $(srcdir)/postscriptdialog.cpp $(srcdir)/previewconfigwidget.cpp $(srcdir)/quickpreview.cpp $(srcdir)/includegraphicsdialog.cpp $(srcdir)/newfilewizard.cpp $(srcdir)/managetemplatesdialog.cpp $(srcdir)/templates.cpp $(srcdir)/metapostview.cpp $(srcdir)/usermenudialog.cpp $(srcdir)/kileconfigdialog.cpp $(srcdir)/tabbingdialog.cpp $(srcdir)/symbolview.cpp $(srcdir)/quickdocumentdialog.cpp $(srcdir)/kilefileselect.cpp $(srcdir)/kileapplication.cpp $(srcdir)/docpart.cpp $(srcdir)/kile.cpp $(srcdir)/main.cpp $(srcdir)/kileactions.cpp $(srcdir)/kilestdactions.cpp $(srcdir)/kileinfo.cpp $(srcdir)/kiledocumentinfo.cpp $(srcdir)/kileproject.cpp $(srcdir)/kileprojectdlgs.cpp $(srcdir)/kileprojectview.cpp $(srcdir)/kilelistselector.cpp $(srcdir)/kilelyxserver.cpp $(srcdir)/latexoutputfilter.cpp $(srcdir)/outputinfo.cpp $(srcdir)/latexoutputinfo.cpp $(srcdir)/outputfilter.cpp $(srcdir)/kilegrepdialog.cpp $(srcdir)/kiletool.cpp $(srcdir)/kilelauncher.cpp $(srcdir)/kiletoolmanager.cpp $(srcdir)/kilestdtools.cpp $(srcdir)/kilelogwidget.cpp $(srcdir)/kileoutputwidget.cpp $(srcdir)/kilekonsolewidget.cpp $(srcdir)/kilewizard.cpp $(srcdir)/kilestructurewidget.cpp $(srcdir)/codecompletion.cpp $(srcdir)/configcodecompletion.cpp $(srcdir)/kiletoolconfigwidget.cpp $(srcdir)/kileedit.cpp $(srcdir)/cleandialog.cpp $(srcdir)/kilehelp.cpp $(srcdir)/configstructure.cpp $(srcdir)/convert.cpp $(srcdir)/kiledocmanager.cpp $(srcdir)/kileviewmanager.cpp $(srcdir)/kileeventfilter.cpp $(srcdir)/kilespell.cpp $(srcdir)/kileerrorhandler.cpp $(srcdir)/configcheckerdlg.cpp $(srcdir)/configtester.cpp $(srcdir)/kilesidebar.cpp $(srcdir)/plaintolatexconverter.cpp $(srcdir)/kileuntitled.cpp $(srcdir)/kilestatsdlg.cpp $(srcdir)/kilestatswidget.cpp $(srcdir)/kileappIface_skel.cpp $(srcdir)/helpconfigwidget.cpp $(srcdir)/latexconfigwidget.cpp $(srcdir)/generalconfigwidget.cpp $(srcdir)/configcheckerwidget.cpp $(srcdir)/toolconfigwidget.cpp $(srcdir)/librarytoolconfigwidget.cpp $(srcdir)/processtoolconfigwidget.cpp $(srcdir)/quicktoolconfigwidget.cpp $(srcdir)/latextoolconfigwidget.cpp $(srcdir)/newtoolwizard.cpp $(srcdir)/envconfigwidget.cpp $(srcdir)/structureconfigwidget.cpp $(srcdir)/kileconfig.cpp  configcheckerdlg.moc kilefileselect.moc kiletoolmanager.moc quickpreview.moc newfilewizard.moc kile.moc tabulardialog.moc generalconfigwidget.moc kiledocmanager.moc latexcmd.moc mathenvdialog.moc kilehelp.moc kileviewmanager.moc latexconfigwidget.moc envconfigwidget.moc postscriptdialog.moc configcheckerwidget.moc userhelp.moc configtester.moc cleandialog.moc docpart.moc configstructure.moc outputfilter.moc kilelauncher.moc kiledocumentinfo.moc kileerrorhandler.moc kileconfigdialog.moc texdocdialog.moc quicktoolconfigwidget.moc latexcmddialog.moc kilestatswidget.moc symbolview.moc kilelogwidget.moc kileproject.moc userhelpdialog.moc codecompletion.moc latextoolconfigwidget.moc kilekonsolewidget.moc configcodecompletion.moc kiletool.moc processtoolconfigwidget.moc librarytoolconfigwidget.moc kileedit.moc kilelyxserver.moc usermenudialog.moc metapostview.moc kileactions.moc newtoolwizard.moc kileprojectdlgs.moc kilestructurewidget.moc kileprojectview.moc helpconfigwidget.moc includegraphicsdialog.moc toolconfigwidget.moc tabbingdialog.moc kiletoolconfigwidget.moc kileeventfilter.moc previewconfigwidget.moc floatdialog.moc kilestdtools.moc kilegrepdialog.moc kilespell.moc kilesidebar.moc kileoutputwidget.moc managetemplatesdialog.moc quickdocumentdialog.moc structureconfigwidget.moc
++kile.all_cpp.cpp: $(srcdir)/Makefile.in $(srcdir)/latexcmd.cpp $(srcdir)/latexcmddialog.cpp $(srcdir)/texdocdialog.cpp $(srcdir)/userhelp.cpp $(srcdir)/userhelpdialog.cpp $(srcdir)/floatdialog.cpp $(srcdir)/mathenvdialog.cpp $(srcdir)/tabulardialog.cpp $(srcdir)/postscriptdialog.cpp $(srcdir)/previewconfigwidget.cpp $(srcdir)/quickpreview.cpp $(srcdir)/includegraphicsdialog.cpp $(srcdir)/newfilewizard.cpp $(srcdir)/managetemplatesdialog.cpp $(srcdir)/templates.cpp $(srcdir)/metapostview.cpp $(srcdir)/usermenudialog.cpp $(srcdir)/kileconfigdialog.cpp $(srcdir)/tabbingdialog.cpp $(srcdir)/symbolview.cpp $(srcdir)/quickdocumentdialog.cpp $(srcdir)/kilefileselect.cpp $(srcdir)/kileapplication.cpp $(srcdir)/docpart.cpp $(srcdir)/kile.cpp $(srcdir)/main.cpp $(srcdir)/kileactions.cpp $(srcdir)/kilestdactions.cpp $(srcdir)/kileinfo.cpp $(srcdir)/kiledocumentinfo.cpp $(srcdir)/kileproject.cpp $(srcdir)/kileprojectdlgs.cpp $(srcdir)/kileprojectview.cpp $(srcdir)/kilelistselector.cpp $(srcdir)/kilelyxserver.cpp $(srcdir)/latexoutputfilter.cpp $(srcdir)/outputinfo.cpp $(srcdir)/latexoutputinfo.cpp $(srcdir)/outputfilter.cpp $(srcdir)/kilegrepdialog.cpp $(srcdir)/kiletool.cpp $(srcdir)/kilelauncher.cpp $(srcdir)/kiletoolmanager.cpp $(srcdir)/kilestdtools.cpp $(srcdir)/kilelogwidget.cpp $(srcdir)/kileoutputwidget.cpp $(srcdir)/kilekonsolewidget.cpp $(srcdir)/kilewizard.cpp $(srcdir)/kilestructurewidget.cpp $(srcdir)/codecompletion.cpp $(srcdir)/configcodecompletion.cpp $(srcdir)/kiletoolconfigwidget.cpp $(srcdir)/kileedit.cpp $(srcdir)/cleandialog.cpp $(srcdir)/kilehelp.cpp $(srcdir)/configstructure.cpp $(srcdir)/convert.cpp $(srcdir)/kiledocmanager.cpp $(srcdir)/kileviewmanager.cpp $(srcdir)/kileeventfilter.cpp $(srcdir)/kileerrorhandler.cpp $(srcdir)/configcheckerdlg.cpp $(srcdir)/configtester.cpp $(srcdir)/kilesidebar.cpp $(srcdir)/plaintolatexconverter.cpp $(srcdir)/kileuntitled.cpp $(srcdir)/kilestatsdlg.cpp $(srcdir)/kilestatswidget.cpp $(srcdir)/kileappIface_skel.cpp $(srcdir)/helpconfigwidget.cpp $(srcdir)/latexconfigwidget.cpp $(srcdir)/generalconfigwidget.cpp $(srcdir)/configcheckerwidget.cpp $(srcdir)/toolconfigwidget.cpp $(srcdir)/librarytoolconfigwidget.cpp $(srcdir)/processtoolconfigwidget.cpp $(srcdir)/quicktoolconfigwidget.cpp $(srcdir)/latextoolconfigwidget.cpp $(srcdir)/newtoolwizard.cpp $(srcdir)/envconfigwidget.cpp $(srcdir)/structureconfigwidget.cpp $(srcdir)/kileconfig.cpp  configcheckerdlg.moc kilefileselect.moc kiletoolmanager.moc quickpreview.moc newfilewizard.moc kile.moc tabulardialog.moc generalconfigwidget.moc kiledocmanager.moc latexcmd.moc mathenvdialog.moc kilehelp.moc kileviewmanager.moc latexconfigwidget.moc envconfigwidget.moc postscriptdialog.moc configcheckerwidget.moc userhelp.moc configtester.moc cleandialog.moc docpart.moc configstructure.moc outputfilter.moc kilelauncher.moc kiledocumentinfo.moc kileerrorhandler.moc kileconfigdialog.moc texdocdialog.moc quicktoolconfigwidget.moc latexcmddialog.moc kilestatswidget.moc symbolview.moc kilelogwidget.moc kileproject.moc userhelpdialog.moc codecompletion.moc latextoolconfigwidget.moc kilekonsolewidget.moc configcodecompletion.moc kiletool.moc processtoolconfigwidget.moc librarytoolconfigwidget.moc kileedit.moc kilelyxserver.moc usermenudialog.moc metapostview.moc kileactions.moc newtoolwizard.moc kileprojectdlgs.moc kilestructurewidget.moc kileprojectview.moc helpconfigwidget.moc includegraphicsdialog.moc toolconfigwidget.moc tabbingdialog.moc kiletoolconfigwidget.moc kileeventfilter.moc previewconfigwidget.moc floatdialog.moc kilestdtools.moc kilegrepdialog.moc kilesidebar.moc kileoutputwidget.moc managetemplatesdialog.moc quickdocumentdialog.moc structureconfigwidget.moc
+ 	@echo 'creating kile.all_cpp.cpp ...'; \
+ 	rm -f kile.all_cpp.files kile.all_cpp.final; \
+ 	echo "#define KDE_USE_FINAL 1" >> kile.all_cpp.final; \
+-	for file in latexcmd.cpp latexcmddialog.cpp texdocdialog.cpp userhelp.cpp userhelpdialog.cpp floatdialog.cpp mathenvdialog.cpp tabulardialog.cpp postscriptdialog.cpp previewconfigwidget.cpp quickpreview.cpp includegraphicsdialog.cpp newfilewizard.cpp managetemplatesdialog.cpp templates.cpp metapostview.cpp usermenudialog.cpp kileconfigdialog.cpp tabbingdialog.cpp symbolview.cpp quickdocumentdialog.cpp kilefileselect.cpp kileapplication.cpp docpart.cpp kile.cpp main.cpp kileactions.cpp kilestdactions.cpp kileinfo.cpp kiledocumentinfo.cpp kileproject.cpp kileprojectdlgs.cpp kileprojectview.cpp kilelistselector.cpp kilelyxserver.cpp latexoutputfilter.cpp outputinfo.cpp latexoutputinfo.cpp outputfilter.cpp kilegrepdialog.cpp kiletool.cpp kilelauncher.cpp kiletoolmanager.cpp kilestdtools.cpp kilelogwidget.cpp kileoutputwidget.cpp kilekonsolewidget.cpp kilewizard.cpp kilestructurewidget.cpp codecompletion.cpp configcodecompletion.cpp kiletoolconfigwidget.cpp kileedit.cpp cleandialog.cpp kilehelp.cpp configstructure.cpp convert.cpp kiledocmanager.cpp kileviewmanager.cpp kileeventfilter.cpp kilespell.cpp kileerrorhandler.cpp configcheckerdlg.cpp configtester.cpp kilesidebar.cpp plaintolatexconverter.cpp kileuntitled.cpp kilestatsdlg.cpp kilestatswidget.cpp kileappIface_skel.cpp helpconfigwidget.cpp latexconfigwidget.cpp generalconfigwidget.cpp configcheckerwidget.cpp toolconfigwidget.cpp librarytoolconfigwidget.cpp processtoolconfigwidget.cpp quicktoolconfigwidget.cpp latextoolconfigwidget.cpp newtoolwizard.cpp envconfigwidget.cpp structureconfigwidget.cpp kileconfig.cpp ; do \
++	for file in latexcmd.cpp latexcmddialog.cpp texdocdialog.cpp userhelp.cpp userhelpdialog.cpp floatdialog.cpp mathenvdialog.cpp tabulardialog.cpp postscriptdialog.cpp previewconfigwidget.cpp quickpreview.cpp includegraphicsdialog.cpp newfilewizard.cpp managetemplatesdialog.cpp templates.cpp metapostview.cpp usermenudialog.cpp kileconfigdialog.cpp tabbingdialog.cpp symbolview.cpp quickdocumentdialog.cpp kilefileselect.cpp kileapplication.cpp docpart.cpp kile.cpp main.cpp kileactions.cpp kilestdactions.cpp kileinfo.cpp kiledocumentinfo.cpp kileproject.cpp kileprojectdlgs.cpp kileprojectview.cpp kilelistselector.cpp kilelyxserver.cpp latexoutputfilter.cpp outputinfo.cpp latexoutputinfo.cpp outputfilter.cpp kilegrepdialog.cpp kiletool.cpp kilelauncher.cpp kiletoolmanager.cpp kilestdtools.cpp kilelogwidget.cpp kileoutputwidget.cpp kilekonsolewidget.cpp kilewizard.cpp kilestructurewidget.cpp codecompletion.cpp configcodecompletion.cpp kiletoolconfigwidget.cpp kileedit.cpp cleandialog.cpp kilehelp.cpp configstructure.cpp convert.cpp kiledocmanager.cpp kileviewmanager.cpp kileeventfilter.cpp kileerrorhandler.cpp configcheckerdlg.cpp configtester.cpp kilesidebar.cpp plaintolatexconverter.cpp kileuntitled.cpp kilestatsdlg.cpp kilestatswidget.cpp kileappIface_skel.cpp helpconfigwidget.cpp latexconfigwidget.cpp generalconfigwidget.cpp configcheckerwidget.cpp toolconfigwidget.cpp librarytoolconfigwidget.cpp processtoolconfigwidget.cpp quicktoolconfigwidget.cpp latextoolconfigwidget.cpp newtoolwizard.cpp envconfigwidget.cpp structureconfigwidget.cpp kileconfig.cpp ; do \
+ 	  echo "#include \"$$file\"" >> kile.all_cpp.files; \
+ 	  test ! -f $(srcdir)/$$file || egrep '^#pragma +implementation' $(srcdir)/$$file >> kile.all_cpp.final; \
+ 	done; \
+@@ -1572,9 +1556,7 @@
+ 	-rm -f *.rpo
+ 
+ #>+ 184
+-$(srcdir)/kilespell.cpp: helpconfigwidget.h latexconfigwidget.h generalconfigwidget.h configcheckerwidget.h toolconfigwidget.h librarytoolconfigwidget.h processtoolconfigwidget.h quicktoolconfigwidget.h latextoolconfigwidget.h newtoolwizard.h envconfigwidget.h structureconfigwidget.h kileconfig.h 
+ tabbingdialog.lo: tabbingdialog.moc 
+-kilespell.o: kilespell.moc 
+ texdocdialog.lo: texdocdialog.moc 
+ mathenvdialog.lo: mathenvdialog.moc 
+ kilestdtools.o: kilestdtools.moc 
+@@ -1598,7 +1580,6 @@
+ $(srcdir)/mathenvdialog.cpp: helpconfigwidget.h latexconfigwidget.h generalconfigwidget.h configcheckerwidget.h toolconfigwidget.h librarytoolconfigwidget.h processtoolconfigwidget.h quicktoolconfigwidget.h latextoolconfigwidget.h newtoolwizard.h envconfigwidget.h structureconfigwidget.h kileconfig.h 
+ latexcmddialog.o: latexcmddialog.moc 
+ symbolview.lo: symbolview.moc 
+-kilespell2.o: kilespell2.moc 
+ $(srcdir)/kileconfigdialog.cpp: helpconfigwidget.h latexconfigwidget.h generalconfigwidget.h configcheckerwidget.h toolconfigwidget.h librarytoolconfigwidget.h processtoolconfigwidget.h quicktoolconfigwidget.h latextoolconfigwidget.h newtoolwizard.h envconfigwidget.h structureconfigwidget.h kileconfig.h 
+ $(srcdir)/latexcmddialog.cpp: helpconfigwidget.h latexconfigwidget.h generalconfigwidget.h configcheckerwidget.h toolconfigwidget.h librarytoolconfigwidget.h processtoolconfigwidget.h quicktoolconfigwidget.h latextoolconfigwidget.h newtoolwizard.h envconfigwidget.h structureconfigwidget.h kileconfig.h 
+ quickpreview.lo: quickpreview.moc 
+@@ -1698,7 +1679,6 @@
+ codecompletion.o: codecompletion.moc 
+ $(srcdir)/kilesidebar.cpp: helpconfigwidget.h latexconfigwidget.h generalconfigwidget.h configcheckerwidget.h toolconfigwidget.h librarytoolconfigwidget.h processtoolconfigwidget.h quicktoolconfigwidget.h latextoolconfigwidget.h newtoolwizard.h envconfigwidget.h structureconfigwidget.h kileconfig.h 
+ $(srcdir)/kilewizard.cpp: helpconfigwidget.h latexconfigwidget.h generalconfigwidget.h configcheckerwidget.h toolconfigwidget.h librarytoolconfigwidget.h processtoolconfigwidget.h quicktoolconfigwidget.h latextoolconfigwidget.h newtoolwizard.h envconfigwidget.h structureconfigwidget.h kileconfig.h 
+-kilespell2.lo: kilespell2.moc 
+ configtester.o: configtester.moc 
+ kilestatswidget.o: kilestatswidget.moc 
+ codecompletion.lo: codecompletion.moc 
+@@ -1707,7 +1687,6 @@
+ $(srcdir)/kileuntitled.cpp: helpconfigwidget.h latexconfigwidget.h generalconfigwidget.h configcheckerwidget.h toolconfigwidget.h librarytoolconfigwidget.h processtoolconfigwidget.h quicktoolconfigwidget.h latextoolconfigwidget.h newtoolwizard.h envconfigwidget.h structureconfigwidget.h kileconfig.h 
+ kileproject.lo: kileproject.moc 
+ $(srcdir)/usermenudialog.cpp: helpconfigwidget.h latexconfigwidget.h generalconfigwidget.h configcheckerwidget.h toolconfigwidget.h librarytoolconfigwidget.h processtoolconfigwidget.h quicktoolconfigwidget.h latextoolconfigwidget.h newtoolwizard.h envconfigwidget.h structureconfigwidget.h kileconfig.h 
+-kilespell.lo: kilespell.moc 
+ cleandialog.lo: cleandialog.moc 
+ userhelpdialog.lo: userhelpdialog.moc 
+ $(srcdir)/kiletoolconfigwidget.cpp: helpconfigwidget.h latexconfigwidget.h generalconfigwidget.h configcheckerwidget.h toolconfigwidget.h librarytoolconfigwidget.h processtoolconfigwidget.h quicktoolconfigwidget.h latextoolconfigwidget.h newtoolwizard.h envconfigwidget.h structureconfigwidget.h kileconfig.h 

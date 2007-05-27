@@ -1,8 +1,14 @@
-kile (1:1.9.3-3) UNRELEASED; urgency=low
+kile (1:1.9.3-3) unstable; urgency=low
 
-  * NOT RELEASED YET
+  * Update tex documentation location and fifo in tmp patches.
+  * Add patch to remove tips.cpp. Fix FTBFS on Ubuntu.
+  * Add patch to remove kilespell. (Closes: #416936)
+  * Split kile-i18n in kile-i18n-*. (Closes: #425996)
+  * Update control:
+    * Remove tetex-* Depends/Recommends. (Closes: #419763)
+    * Replace texlive-base-bin by texlive-latex-base
 
- -- Mark Purcell <msp@debian.org>  Thu, 22 Mar 2007 22:53:03 +0000
+ -- Fathi Boudra <fboudra@free.fr>  Sat, 26 May 2007 13:07:10 +0200
 
 kile (1:1.9.3-2) unstable; urgency=low
 
@@ -18,7 +24,7 @@ kile (1:1.9.3-2) unstable; urgency=low
 kile (1:1.9.3-1) unstable; urgency=low
 
   [Fathi Boudra]
-  * New upstream release 
+  * New upstream release
 
  -- Fathi Boudra <fboudra@free.fr>  Mon, 20 Nov 2006 10:28:34 +0100
 
