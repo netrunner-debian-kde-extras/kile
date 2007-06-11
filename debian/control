@@ -2,7 +2,7 @@ Source: kile
 Section: tex
 Priority: optional
 Maintainer: Debian KDE Extras Team <pkg-kde-extras@lists.alioth.debian.org>
-Uploaders: Fathi Boudra <fboudra@free.fr>, Mark Purcell <msp@debian.org>, Ana Beatriz Guerrero Lopez <ana@debian.org>
+Uploaders: Fathi Boudra <fboudra@free.fr>, Mark Purcell <msp@debian.org>
 Build-Depends: cdbs, debhelper (>= 5), automake1.9, kdelibs4-dev, libtool
 Standards-Version: 3.7.2
 
@@ -35,8 +35,8 @@ Architecture: all
 Section: tex
 Depends: kile (>= ${source:Version})
 Recommends: kde-i18n-br
-Conflicts: kile-i18n (<< 1:1.9.3-2)
-Replaces: kile (<< 1:1.7.1), kile-i18n (<< 1:1.9.3-2)
+Conflicts: kile-i18n (<< 1:1.9.3-3)
+Replaces: kile (<< 1:1.7.1), kile-i18n (<< 1:1.9.3-3)
 Provides: kile-i18n
 Description: Brazilian (br) translations for Kile
  This package contains the Brazilian translations for Kile.
@@ -46,8 +46,8 @@ Architecture: all
 Section: tex
 Depends: kile (>= ${source:Version})
 Recommends: kde-i18n-ca
-Conflicts: kile-i18n (<< 1:1.9.3-2)
-Replaces: kile (<< 1:1.7.1), kile-i18n (<< 1:1.9.3-2)
+Conflicts: kile-i18n (<< 1:1.9.3-3)
+Replaces: kile (<< 1:1.7.1), kile-i18n (<< 1:1.9.3-3)
 Provides: kile-i18n
 Description: Catalan (ca) translations for Kile
  This package contains the Catalan translations for Kile.
@@ -57,8 +57,8 @@ Architecture: all
 Section: tex
 Depends: kile (>= ${source:Version})
 Recommends: kde-i18n-cs
-Conflicts: kile-i18n (<< 1:1.9.3-2)
-Replaces: kile (<< 1:1.7.1), kile-i18n (<< 1:1.9.3-2)
+Conflicts: kile-i18n (<< 1:1.9.3-3)
+Replaces: kile (<< 1:1.7.1), kile-i18n (<< 1:1.9.3-3)
 Provides: kile-i18n
 Description: Czech (cs) translations for Kile
  This package contains the Czech translations for Kile.
@@ -68,8 +68,8 @@ Architecture: all
 Section: tex
 Depends: kile (>= ${source:Version})
 Recommends: kde-i18n-cy
-Conflicts: kile-i18n (<< 1:1.9.3-2)
-Replaces: kile (<< 1:1.7.1), kile-i18n (<< 1:1.9.3-2)
+Conflicts: kile-i18n (<< 1:1.9.3-3)
+Replaces: kile (<< 1:1.7.1), kile-i18n (<< 1:1.9.3-3)
 Provides: kile-i18n
 Description: Welsh (cy) translations for Kile
  This package contains the Welsh translations for Kile.
@@ -79,8 +79,8 @@ Architecture: all
 Section: tex
 Depends: kile (>= ${source:Version})
 Recommends: kde-i18n-da
-Conflicts: kile-i18n (<< 1:1.9.3-2)
-Replaces: kile (<< 1:1.7.1), kile-i18n (<< 1:1.9.3-2)
+Conflicts: kile-i18n (<< 1:1.9.3-3)
+Replaces: kile (<< 1:1.7.1), kile-i18n (<< 1:1.9.3-3)
 Provides: kile-i18n
 Description: Danish (da) translations for Kile
  This package contains the Danish translations for Kile.
@@ -90,8 +90,8 @@ Architecture: all
 Section: tex
 Depends: kile (>= ${source:Version})
 Recommends: kde-i18n-de
-Conflicts: kile-i18n (<< 1:1.9.3-2)
-Replaces: kile (<< 1:1.7.1), kile-i18n (<< 1:1.9.3-2)
+Conflicts: kile-i18n (<< 1:1.9.3-3)
+Replaces: kile (<< 1:1.7.1), kile-i18n (<< 1:1.9.3-3)
 Provides: kile-i18n
 Description: German (de) translations for Kile
  This package contains the German translations for Kile.
@@ -101,8 +101,8 @@ Architecture: all
 Section: tex
 Depends: kile (>= ${source:Version})
 Recommends: kde-i18n-el
-Conflicts: kile-i18n (<< 1:1.9.3-2)
-Replaces: kile (<< 1:1.7.1), kile-i18n (<< 1:1.9.3-2)
+Conflicts: kile-i18n (<< 1:1.9.3-3)
+Replaces: kile (<< 1:1.7.1), kile-i18n (<< 1:1.9.3-3)
 Provides: kile-i18n
 Description: Greek (el) translations for Kile
  This package contains the greek translations for Kile.
@@ -112,8 +112,8 @@ Architecture: all
 Section: tex
 Depends: kile (>= ${source:Version})
 Recommends: kde-i18n-engb
-Conflicts: kile-i18n (<< 1:1.9.3-2)
-Replaces: kile (<< 1:1.7.1), kile-i18n (<< 1:1.9.3-2)
+Conflicts: kile-i18n (<< 1:1.9.3-3)
+Replaces: kile (<< 1:1.7.1), kile-i18n (<< 1:1.9.3-3)
 Provides: kile-i18n
 Description: British English (en_GB) translations for Kile
  This package contains the British English (en_GB) translations for Kile.
@@ -123,8 +123,8 @@ Architecture: all
 Section: tex
 Depends: kile (>= ${source:Version})
 Recommends: kde-i18n-es
-Conflicts: kile-i18n (<< 1:1.9.3-2)
-Replaces: kile (<< 1:1.7.1), kile-i18n (<< 1:1.9.3-2)
+Conflicts: kile-i18n (<< 1:1.9.3-3)
+Replaces: kile (<< 1:1.7.1), kile-i18n (<< 1:1.9.3-3)
 Provides: kile-i18n
 Description: Spanish (es) translations for Kile
  This package contains the Spanish translations for Kile.
@@ -134,8 +134,8 @@ Architecture: all
 Section: tex
 Depends: kile (>= ${source:Version})
 Recommends: kde-i18n-et
-Conflicts: kile-i18n (<< 1:1.9.3-2)
-Replaces: kile (<< 1:1.7.1), kile-i18n (<< 1:1.9.3-2)
+Conflicts: kile-i18n (<< 1:1.9.3-3)
+Replaces: kile (<< 1:1.7.1), kile-i18n (<< 1:1.9.3-3)
 Provides: kile-i18n
 Description: Estonian (et) translations for Kile
  This package contains the Estonian translations for Kile.
@@ -145,8 +145,8 @@ Architecture: all
 Section: tex
 Depends: kile (>= ${source:Version})
 Recommends: kde-i18n-eu
-Conflicts: kile-i18n (<< 1:1.9.3-2)
-Replaces: kile (<< 1:1.7.1), kile-i18n (<< 1:1.9.3-2)
+Conflicts: kile-i18n (<< 1:1.9.3-3)
+Replaces: kile (<< 1:1.7.1), kile-i18n (<< 1:1.9.3-3)
 Provides: kile-i18n
 Description: Basque (eu) translations for Kile
  This package contains the Basque translations for Kile.
@@ -156,8 +156,8 @@ Architecture: all
 Section: tex
 Depends: kile (>= ${source:Version})
 Recommends: kde-i18n-fi
-Conflicts: kile-i18n (<< 1:1.9.3-2)
-Replaces: kile (<< 1:1.7.1), kile-i18n (<< 1:1.9.3-2)
+Conflicts: kile-i18n (<< 1:1.9.3-3)
+Replaces: kile (<< 1:1.7.1), kile-i18n (<< 1:1.9.3-3)
 Provides: kile-i18n
 Description: Finnish (fi) translations for Kile
  This package contains the Finnish translations for Kile.
@@ -167,8 +167,8 @@ Architecture: all
 Section: tex
 Depends: kile (>= ${source:Version})
 Recommends: kde-i18n-fr
-Conflicts: kile-i18n (<< 1:1.9.3-2)
-Replaces: kile (<< 1:1.7.1), kile-i18n (<< 1:1.9.3-2)
+Conflicts: kile-i18n (<< 1:1.9.3-3)
+Replaces: kile (<< 1:1.7.1), kile-i18n (<< 1:1.9.3-3)
 Provides: kile-i18n
 Description: French (fr) translations for Kile
  This package contains the French translations for Kile.
@@ -178,8 +178,8 @@ Architecture: all
 Section: tex
 Depends: kile (>= ${source:Version})
 Recommends: kde-i18n-ga
-Conflicts: kile-i18n (<< 1:1.9.3-2)
-Replaces: kile (<< 1:1.7.1), kile-i18n (<< 1:1.9.3-2)
+Conflicts: kile-i18n (<< 1:1.9.3-3)
+Replaces: kile (<< 1:1.7.1), kile-i18n (<< 1:1.9.3-3)
 Provides: kile-i18n
 Description: Irish Gaelic (ga) translations for Kile
  This package contains the Irish Gaelic translations for Kile.
@@ -189,8 +189,8 @@ Architecture: all
 Section: tex
 Depends: kile (>= ${source:Version})
 Recommends: kde-i18n-gl
-Conflicts: kile-i18n (<< 1:1.9.3-2)
-Replaces: kile (<< 1:1.7.1), kile-i18n (<< 1:1.9.3-2)
+Conflicts: kile-i18n (<< 1:1.9.3-3)
+Replaces: kile (<< 1:1.7.1), kile-i18n (<< 1:1.9.3-3)
 Provides: kile-i18n
 Description: Galician (gl) translations for Kile
  This package contains the Galician translations for Kile.
@@ -200,8 +200,8 @@ Architecture: all
 Section: tex
 Depends: kile (>= ${source:Version})
 Recommends: kde-i18n-hi
-Conflicts: kile-i18n (<< 1:1.9.3-2)
-Replaces: kile (<< 1:1.7.1), kile-i18n (<< 1:1.9.3-2)
+Conflicts: kile-i18n (<< 1:1.9.3-3)
+Replaces: kile (<< 1:1.7.1), kile-i18n (<< 1:1.9.3-3)
 Provides: kile-i18n
 Description: Hindi (hi) translations for Kile
  This package contains the Hindi translations for Kile.
@@ -211,8 +211,8 @@ Architecture: all
 Section: tex
 Depends: kile (>= ${source:Version})
 Recommends: kde-i18n-hu
-Conflicts: kile-i18n (<< 1:1.9.3-2)
-Replaces: kile (<< 1:1.7.1), kile-i18n (<< 1:1.9.3-2)
+Conflicts: kile-i18n (<< 1:1.9.3-3)
+Replaces: kile (<< 1:1.7.1), kile-i18n (<< 1:1.9.3-3)
 Provides: kile-i18n
 Description: Hungarian (hu) translations for Kile
  This package contains the Hungarian translations for Kile.
@@ -222,8 +222,8 @@ Architecture: all
 Section: tex
 Depends: kile (>= ${source:Version})
 Recommends: kde-i18n-is
-Conflicts: kile-i18n (<< 1:1.9.3-2)
-Replaces: kile (<< 1:1.7.1), kile-i18n (<< 1:1.9.3-2)
+Conflicts: kile-i18n (<< 1:1.9.3-3)
+Replaces: kile (<< 1:1.7.1), kile-i18n (<< 1:1.9.3-3)
 Provides: kile-i18n
 Description: Icelandic (is) translations for Kile
  This package contains the Icelandic translations for Kile.
@@ -233,8 +233,8 @@ Architecture: all
 Section: tex
 Depends: kile (>= ${source:Version})
 Recommends: kde-i18n-it
-Conflicts: kile-i18n (<< 1:1.9.3-2)
-Replaces: kile (<< 1:1.7.1), kile-i18n (<< 1:1.9.3-2)
+Conflicts: kile-i18n (<< 1:1.9.3-3)
+Replaces: kile (<< 1:1.7.1), kile-i18n (<< 1:1.9.3-3)
 Provides: kile-i18n
 Description: Italian (it) translations for Kile
  This package contains the Italian translations for Kile.
@@ -244,8 +244,8 @@ Architecture: all
 Section: tex
 Depends: kile (>= ${source:Version})
 Recommends: kde-i18n-ja
-Conflicts: kile-i18n (<< 1:1.9.3-2)
-Replaces: kile (<< 1:1.7.1), kile-i18n (<< 1:1.9.3-2)
+Conflicts: kile-i18n (<< 1:1.9.3-3)
+Replaces: kile (<< 1:1.7.1), kile-i18n (<< 1:1.9.3-3)
 Provides: kile-i18n
 Description: Japanese (ja) translations for Kile
  This package contains the Japanese translations for Kile.
@@ -255,8 +255,8 @@ Architecture: all
 Section: tex
 Depends: kile (>= ${source:Version})
 Recommends: kde-i18n-lt
-Conflicts: kile-i18n (<< 1:1.9.3-2)
-Replaces: kile (<< 1:1.7.1), kile-i18n (<< 1:1.9.3-2)
+Conflicts: kile-i18n (<< 1:1.9.3-3)
+Replaces: kile (<< 1:1.7.1), kile-i18n (<< 1:1.9.3-3)
 Provides: kile-i18n
 Description: Lithuanian (lt) translations for Kile
  This package contains the Lithuanian translations for Kile.
@@ -265,8 +265,8 @@ Package: kile-i18n-mt
 Architecture: all
 Section: tex
 Depends: kile (>= ${source:Version})
-Conflicts: kile-i18n (<< 1:1.9.3-2)
-Replaces: kile (<< 1:1.7.1), kile-i18n (<< 1:1.9.3-2)
+Conflicts: kile-i18n (<< 1:1.9.3-3)
+Replaces: kile (<< 1:1.7.1), kile-i18n (<< 1:1.9.3-3)
 Provides: kile-i18n
 Description: Maltese (mt) translations for Kile
  This package contains the Maltese translations for Kile.
@@ -276,8 +276,8 @@ Architecture: all
 Section: tex
 Depends: kile (>= ${source:Version})
 Recommends: kde-i18n-nb
-Conflicts: kile-i18n (<< 1:1.9.3-2)
-Replaces: kile (<< 1:1.7.1), kile-i18n (<< 1:1.9.3-2)
+Conflicts: kile-i18n (<< 1:1.9.3-3)
+Replaces: kile (<< 1:1.7.1), kile-i18n (<< 1:1.9.3-3)
 Provides: kile-i18n
 Description: Norwegian Bookmal (nb) translations for Kile
  This package contains the Norwegian Bookmal translations for Kile.
@@ -287,8 +287,8 @@ Architecture: all
 Section: tex
 Depends: kile (>= ${source:Version})
 Recommends: kde-i18n-nl
-Conflicts: kile-i18n (<< 1:1.9.3-2)
-Replaces: kile (<< 1:1.7.1), kile-i18n (<< 1:1.9.3-2)
+Conflicts: kile-i18n (<< 1:1.9.3-3)
+Replaces: kile (<< 1:1.7.1), kile-i18n (<< 1:1.9.3-3)
 Provides: kile-i18n
 Description: Dutch (nl) translations for Kile
  This package contains the Dutch translations for Kile.
@@ -298,8 +298,8 @@ Architecture: all
 Section: tex
 Depends: kile (>= ${source:Version})
 Recommends: kde-i18n-nn
-Conflicts: kile-i18n (<< 1:1.9.3-2)
-Replaces: kile (<< 1:1.7.1), kile-i18n (<< 1:1.9.3-2)
+Conflicts: kile-i18n (<< 1:1.9.3-3)
+Replaces: kile (<< 1:1.7.1), kile-i18n (<< 1:1.9.3-3)
 Provides: kile-i18n
 Description: Norwegian Nynorsk (nn) translations for Kile
  This package contains the Norwegian Nynorsk translations for Kile.
@@ -309,8 +309,8 @@ Architecture: all
 Section: tex
 Depends: kile (>= ${source:Version})
 Recommends: kde-i18n-pa
-Conflicts: kile-i18n (<< 1:1.9.3-2)
-Replaces: kile (<< 1:1.7.1), kile-i18n (<< 1:1.9.3-2)
+Conflicts: kile-i18n (<< 1:1.9.3-3)
+Replaces: kile (<< 1:1.7.1), kile-i18n (<< 1:1.9.3-3)
 Provides: kile-i18n
 Description: Punjabi (pa) translations for Kile
  This package contains the Punjabi translations for Kile.
@@ -320,8 +320,8 @@ Architecture: all
 Section: tex
 Depends: kile (>= ${source:Version})
 Recommends: kde-i18n-pl
-Conflicts: kile-i18n (<< 1:1.9.3-2)
-Replaces: kile (<< 1:1.7.1), kile-i18n (<< 1:1.9.3-2)
+Conflicts: kile-i18n (<< 1:1.9.3-3)
+Replaces: kile (<< 1:1.7.1), kile-i18n (<< 1:1.9.3-3)
 Provides: kile-i18n
 Description: Polish (pl) translations for Kile
  This package contains the Polish translations for Kile.
@@ -331,8 +331,8 @@ Architecture: all
 Section: tex
 Depends: kile (>= ${source:Version})
 Recommends: kde-i18n-pt
-Conflicts: kile-i18n (<< 1:1.9.3-2)
-Replaces: kile (<< 1:1.7.1), kile-i18n (<< 1:1.9.3-2)
+Conflicts: kile-i18n (<< 1:1.9.3-3)
+Replaces: kile (<< 1:1.7.1), kile-i18n (<< 1:1.9.3-3)
 Provides: kile-i18n
 Description: Portuguese (pt) translations for Kile
  This package contains the Portuguese translations for Kile.
@@ -342,8 +342,8 @@ Architecture: all
 Section: tex
 Depends: kile (>= ${source:Version})
 Recommends: kde-i18n-ptbr
-Conflicts: kile-i18n (<< 1:1.9.3-2)
-Replaces: kile (<< 1:1.7.1), kile-i18n (<< 1:1.9.3-2)
+Conflicts: kile-i18n (<< 1:1.9.3-3)
+Replaces: kile (<< 1:1.7.1), kile-i18n (<< 1:1.9.3-3)
 Provides: kile-i18n
 Description: Brazilian Portuguese (pt_BR) translations for Kile
  This package contains the Brazilian Portuguese translations for Kile.
@@ -353,8 +353,8 @@ Architecture: all
 Section: tex
 Depends: kile (>= ${source:Version})
 Recommends: kde-i18n-ro
-Conflicts: kile-i18n (<< 1:1.9.3-2)
-Replaces: kile (<< 1:1.7.1), kile-i18n (<< 1:1.9.3-2)
+Conflicts: kile-i18n (<< 1:1.9.3-3)
+Replaces: kile (<< 1:1.7.1), kile-i18n (<< 1:1.9.3-3)
 Provides: kile-i18n
 Description: Romanian (ro) translations for Kile
  This package contains the Romanian translations for Kile.
@@ -364,8 +364,8 @@ Architecture: all
 Section: tex
 Depends: kile (>= ${source:Version})
 Recommends: kde-i18n-ru
-Conflicts: kile-i18n (<< 1:1.9.3-2)
-Replaces: kile (<< 1:1.7.1), kile-i18n (<< 1:1.9.3-2)
+Conflicts: kile-i18n (<< 1:1.9.3-3)
+Replaces: kile (<< 1:1.7.1), kile-i18n (<< 1:1.9.3-3)
 Provides: kile-i18n
 Description: Russian (ru) translations for Kile
  This package contains the Russian translations for Kile.
@@ -375,8 +375,8 @@ Architecture: all
 Section: tex
 Depends: kile (>= ${source:Version})
 Recommends: kde-i18n-rw
-Conflicts: kile-i18n (<< 1:1.9.3-2)
-Replaces: kile (<< 1:1.7.1), kile-i18n (<< 1:1.9.3-2)
+Conflicts: kile-i18n (<< 1:1.9.3-3)
+Replaces: kile (<< 1:1.7.1), kile-i18n (<< 1:1.9.3-3)
 Provides: kile-i18n
 Description: Kinyarwanda (rw) translations for Kile
  This package contains the Kinyarwanda translations for Kile.
@@ -386,8 +386,8 @@ Architecture: all
 Section: tex
 Depends: kile (>= ${source:Version})
 Recommends: kde-i18n-sk
-Conflicts: kile-i18n (<< 1:1.9.3-2)
-Replaces: kile (<< 1:1.7.1), kile-i18n (<< 1:1.9.3-2)
+Conflicts: kile-i18n (<< 1:1.9.3-3)
+Replaces: kile (<< 1:1.7.1), kile-i18n (<< 1:1.9.3-3)
 Provides: kile-i18n
 Description: Slovak (sk) translations for Kile
  This package contains the Slovak translations for Kile.
@@ -397,8 +397,8 @@ Architecture: all
 Section: tex
 Depends: kile (>= ${source:Version})
 Recommends: kde-i18n-sr
-Conflicts: kile-i18n (<< 1:1.9.3-2)
-Replaces: kile (<< 1:1.7.1), kile-i18n (<< 1:1.9.3-2)
+Conflicts: kile-i18n (<< 1:1.9.3-3)
+Replaces: kile (<< 1:1.7.1), kile-i18n (<< 1:1.9.3-3)
 Provides: kile-i18n
 Description: Serbian (sr) translations for Kile
  This package contains the Serbian translations for Kile.
@@ -408,8 +408,8 @@ Architecture: all
 Section: tex
 Depends: kile (>= ${source:Version})
 Recommends: kde-i18n-srlatin
-Conflicts: kile-i18n (<< 1:1.9.3-2)
-Replaces: kile (<< 1:1.7.1), kile-i18n (<< 1:1.9.3-2)
+Conflicts: kile-i18n (<< 1:1.9.3-3)
+Replaces: kile (<< 1:1.7.1), kile-i18n (<< 1:1.9.3-3)
 Provides: kile-i18n
 Description: Latin Serbian (sr@Latn) translations for Kile
  This package contains the Latin Serbian translations for Kile.
@@ -419,8 +419,8 @@ Architecture: all
 Section: tex
 Depends: kile (>= ${source:Version})
 Recommends: kde-i18n-sv
-Conflicts: kile-i18n (<< 1:1.9.3-2)
-Replaces: kile (<< 1:1.7.1), kile-i18n (<< 1:1.9.3-2)
+Conflicts: kile-i18n (<< 1:1.9.3-3)
+Replaces: kile (<< 1:1.7.1), kile-i18n (<< 1:1.9.3-3)
 Provides: kile-i18n
 Description: Swedish (sv) translations for Kile
  This package contains the Swedish translations for Kile.
@@ -430,8 +430,8 @@ Architecture: all
 Section: tex
 Depends: kile (>= ${source:Version})
 Recommends: kde-i18n-ta
-Conflicts: kile-i18n (<< 1:1.9.3-2)
-Replaces: kile (<< 1:1.7.1), kile-i18n (<< 1:1.9.3-2)
+Conflicts: kile-i18n (<< 1:1.9.3-3)
+Replaces: kile (<< 1:1.7.1), kile-i18n (<< 1:1.9.3-3)
 Provides: kile-i18n
 Description: Tamil (ta) translations for Kile
  This package contains the Tamil translations for Kile.
@@ -441,8 +441,8 @@ Architecture: all
 Section: tex
 Depends: kile (>= ${source:Version})
 Recommends: kde-i18n-tr
-Conflicts: kile-i18n (<< 1:1.9.3-2)
-Replaces: kile (<< 1:1.7.1), kile-i18n (<< 1:1.9.3-2)
+Conflicts: kile-i18n (<< 1:1.9.3-3)
+Replaces: kile (<< 1:1.7.1), kile-i18n (<< 1:1.9.3-3)
 Provides: kile-i18n
 Description: Turkish (tr) translations for Kile
  This package contains the Turkish translations for Kile.
@@ -452,8 +452,8 @@ Architecture: all
 Section: tex
 Depends: kile (>= ${source:Version})
 Recommends: kde-i18n-uk
-Conflicts: kile-i18n (<< 1:1.9.3-2)
-Replaces: kile (<< 1:1.7.1), kile-i18n (<< 1:1.9.3-2)
+Conflicts: kile-i18n (<< 1:1.9.3-3)
+Replaces: kile (<< 1:1.7.1), kile-i18n (<< 1:1.9.3-3)
 Provides: kile-i18n
 Description: Ukrainian (uk) translations for Kile
  This package contains the Ukrainian translations for Kile.
@@ -463,8 +463,8 @@ Architecture: all
 Section: tex
 Depends: kile (>= ${source:Version})
 Recommends: kde-i18n-zhcn
-Conflicts: kile-i18n (<< 1:1.9.3-2)
-Replaces: kile (<< 1:1.7.1), kile-i18n (<< 1:1.9.3-2)
+Conflicts: kile-i18n (<< 1:1.9.3-3)
+Replaces: kile (<< 1:1.7.1), kile-i18n (<< 1:1.9.3-3)
 Provides: kile-i18n
 Description: Chinese Simplified (zh_CN) translations for Kile
  This package contains the Chinese Simplified translations for Kile.
