@@ -1,3 +1,9 @@
+kile (1:1.9.3-5) UNRELEASED; urgency=low
+
+  * NOT RELEASED YET
+
+ -- Mark Purcell <msp@debian.org>  Fri, 22 Jun 2007 17:25:40 +0100
+
 kile (1:1.9.3-4) unstable; urgency=low
 
   * Fix wrong conflicts/replaces of kile-i18n-* packages. (Closes: 428340)
