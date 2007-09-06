@@ -1,8 +1,14 @@
-kile (1:1.9.3-5) UNRELEASED; urgency=low
+kile (1:2.0~b1-1) UNRELEASED; urgency=low
 
   * NOT RELEASED YET
+  * New Upstream Release
+  * Remove obsolete patches:
+    - debian/patches/03_libtool_update.diff
+    - debian/patches/11_fifo_in_tmp.diff
+    - debian/patches/12_remove_kilespell.diff
+    - debian/patches/07_remove_tips_cpp.diff
 
- -- Mark Purcell <msp@debian.org>  Fri, 22 Jun 2007 17:25:40 +0100
+ -- Mark Purcell <msp@debian.org>  Thu, 06 Sep 2007 10:53:22 +0100
 
 kile (1:1.9.3-4) unstable; urgency=low
 
