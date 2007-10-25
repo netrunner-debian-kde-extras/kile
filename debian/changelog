@@ -1,6 +1,11 @@
+kile (1:2.0~b2-1) UNRELEASED; urgency=low
+
+  * (NOT RELEASED YET) New upstream release
+
+ -- Mark Purcell <msp@debian.org>  Thu, 25 Oct 2007 21:06:19 +0100
+
 kile (1:2.0~b1-1) UNRELEASED; urgency=low
 
-  * NOT RELEASED YET
   * New Upstream Release
   * Remove obsolete patches:
     - debian/patches/03_libtool_update.diff
