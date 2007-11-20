@@ -1,8 +1,8 @@
-kile (1:2.0~b2-1) UNRELEASED; urgency=low
+kile (1:2.0-1) unstable; urgency=low
 
-  * (NOT RELEASED YET) New upstream release
+  * New upstream release
 
- -- Mark Purcell <msp@debian.org>  Thu, 25 Oct 2007 21:06:19 +0100
+ -- Mark Purcell <msp@debian.org>  Tue, 20 Nov 2007 20:47:13 +0000
 
 kile (1:2.0~b1-1) UNRELEASED; urgency=low
 
