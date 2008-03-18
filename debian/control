@@ -3,15 +3,18 @@ Section: tex
 Priority: optional
 Maintainer: Debian KDE Extras Team <pkg-kde-extras@lists.alioth.debian.org>
 Uploaders: Fathi Boudra <fabo@debian.org>, Mark Purcell <msp@debian.org>
-Build-Depends: cdbs, debhelper (>= 5), automake1.9, kdelibs4-dev, libtool
-Standards-Version: 3.7.2
+Build-Depends: cdbs, debhelper (>= 5), quilt, kdelibs4-dev, pkg-config
+Standards-Version: 3.7.3
+Vcs-Browser: http://svn.debian.org/wsvn/pkg-kde/kde-extras/kile/trunk
+Vcs-Svn: svn://svn.debian.org/pkg-kde/kde-extras/kile/trunk
+Homepage: http://kile.sourceforge.net
 
 Package: kile
 Architecture: any
 Section: tex
 Depends: ${shlibs:Depends}, konsole, texlive-latex-base
-Recommends: kdvi, kghostview
-Suggests: gbib, latex2html, pybliographer, xfig, kile-i18n, gv, kpdf
+Recommends: kdvi, kghostview, kpdf, dvipng
+Suggests: gbib, latex2html, pybliographer, xfig, kile-i18n, gv
 Conflicts: ktexmaker2 (<< 1.8)
 Replaces: ktexmaker2 (<< 1.8)
 Description: KDE Integrated LaTeX Environment
@@ -27,8 +30,28 @@ Description: KDE Integrated LaTeX Environment
  generation of bibliographies and indices and other common tasks.
  .
  Kile can support large projects consisting of several smaller files.
- .
-  Homepage: http://kile.sourceforge.net
+
+Package: kile-i18n-ar
+Architecture: all
+Section: tex
+Depends: kile (>= ${source:Version})
+Recommends: kde-i18n-ar
+Conflicts: kile-i18n (<< 1:1.9.3-3)
+Replaces: kile (<< 1:1.7.1), kile-i18n (<< 1:1.9.3-3)
+Provides: kile-i18n
+Description: Arabic (ar) translations for Kile
+ This package contains the Arabic translations for Kile.
+
+Package: kile-i18n-bg
+Architecture: all
+Section: tex
+Depends: kile (>= ${source:Version})
+Recommends: kde-i18n-bg
+Conflicts: kile-i18n (<< 1:1.9.3-3)
+Replaces: kile (<< 1:1.7.1), kile-i18n (<< 1:1.9.3-3)
+Provides: kile-i18n
+Description: Bulgarian (bg) translations for Kile
+ This package contains the Bulgarian translations for Kile.
 
 Package: kile-i18n-br
 Architecture: all
@@ -261,6 +284,17 @@ Provides: kile-i18n
 Description: Lithuanian (lt) translations for Kile
  This package contains the Lithuanian translations for Kile.
 
+Package: kile-i18n-ms
+Architecture: all
+Section: tex
+Depends: kile (>= ${source:Version})
+Recommends: kde-i18n-ms
+Conflicts: kile-i18n (<< 1:1.9.3-3)
+Replaces: kile (<< 1:1.7.1), kile-i18n (<< 1:1.9.3-3)
+Provides: kile-i18n
+Description: Malay (ms) translations for Kile
+ This package contains the Malay translations for Kile.
+
 Package: kile-i18n-mt
 Architecture: all
 Section: tex
@@ -281,6 +315,17 @@ Replaces: kile (<< 1:1.7.1), kile-i18n (<< 1:1.9.3-3)
 Provides: kile-i18n
 Description: Norwegian Bookmal (nb) translations for Kile
  This package contains the Norwegian Bookmal translations for Kile.
+
+Package: kile-i18n-nds
+Architecture: all
+Section: tex
+Depends: kile (>= ${source:Version})
+Recommends: kde-i18n-nds
+Conflicts: kile-i18n (<< 1:1.9.3-3)
+Replaces: kile (<< 1:1.7.1), kile-i18n (<< 1:1.9.3-3)
+Provides: kile-i18n
+Description: Low Saxon (nds) translations for Kile
+ This package contains the Low Saxon translations for Kile.
 
 Package: kile-i18n-nl
 Architecture: all
@@ -435,6 +480,17 @@ Replaces: kile (<< 1:1.7.1), kile-i18n (<< 1:1.9.3-3)
 Provides: kile-i18n
 Description: Tamil (ta) translations for Kile
  This package contains the Tamil translations for Kile.
+
+Package: kile-i18n-th
+Architecture: all
+Section: tex
+Depends: kile (>= ${source:Version})
+Recommends: kde-i18n-th
+Conflicts: kile-i18n (<< 1:1.9.3-3)
+Replaces: kile (<< 1:1.7.1), kile-i18n (<< 1:1.9.3-3)
+Provides: kile-i18n
+Description: Thai (th) translations for Kile
+ This package contains the Thai translations for Kile.
 
 Package: kile-i18n-tr
 Architecture: all

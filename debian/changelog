@@ -1,8 +1,19 @@
-kile (1:2.0-2) UNRELEASED; urgency=low
+kile (1:2.0.1~rc1-1) unstable; urgency=low
 
-  * NOT RELEASED YET
+  * New upstream release
+  * Remove automake1.9 and libtool build dependencies
+  * Switch to quilt patch system
+  * Bump Standards-Version to 3.7.3
+  * Add Vcs-Browser and Vcs-Svn fields
+  * Use Homepage field
+  * Add Arabic, Bulgarian, Malay, Low Saxon and Thai translations packages
+  * Update copyright
+  * Update menu file to latest Debian menu policy
+  * Use --as-needed flags
+  * Promote kpdf to Recommends
+  * Add dvipng to Recommends
 
- -- Mark Purcell <msp@debian.org>  Tue, 20 Nov 2007 21:34:58 +0000
+ -- Fathi Boudra <fabo@debian.org>  Mon, 17 Mar 2008 16:41:14 +0100
 
 kile (1:2.0-1) unstable; urgency=low
 
@@ -10,7 +21,7 @@ kile (1:2.0-1) unstable; urgency=low
 
  -- Mark Purcell <msp@debian.org>  Tue, 20 Nov 2007 20:47:13 +0000
 
-kile (1:2.0~b1-1) UNRELEASED; urgency=low
+kile (1:2.0~b1-1) unstable; urgency=low
 
   * New Upstream Release
   * Remove obsolete patches:

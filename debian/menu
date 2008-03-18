@@ -1,5 +1,5 @@
 ?package(kile):needs="X11" \
-  section="Apps/Editors" \
+  section="Applications/Editors" \
   hints="KDE" \
   title="Kile" \
   longtitle="Kile (LaTeX development environment)" \
