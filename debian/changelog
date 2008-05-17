@@ -1,3 +1,10 @@
+kile (1:2.0.1-1) unstable; urgency=low
+
+  * New upstream release (Closes: #458512)
+  * Bump compat/debhelper to 6
+
+ -- Fathi Boudra <fabo@debian.org>  Sat, 17 May 2008 20:26:09 +0200
+
 kile (1:2.0.1~rc1-1) unstable; urgency=low
 
   * New upstream release

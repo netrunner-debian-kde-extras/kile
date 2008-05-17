@@ -3,7 +3,7 @@ Section: tex
 Priority: optional
 Maintainer: Debian KDE Extras Team <pkg-kde-extras@lists.alioth.debian.org>
 Uploaders: Fathi Boudra <fabo@debian.org>, Mark Purcell <msp@debian.org>
-Build-Depends: cdbs, debhelper (>= 5), quilt, kdelibs4-dev, pkg-config
+Build-Depends: cdbs, debhelper (>= 6), quilt, kdelibs4-dev, pkg-config
 Standards-Version: 3.7.3
 Vcs-Browser: http://svn.debian.org/wsvn/pkg-kde/kde-extras/kile/trunk
 Vcs-Svn: svn://svn.debian.org/pkg-kde/kde-extras/kile/trunk

@@ -1,5 +1,3 @@
-#DPATCHLEVEL=0
-# vi: ft=diff
 --- a/acinclude.m4
 +++ b/acinclude.m4
 @@ -1613,6 +1613,11 @@
@@ -4885,15 +4883,6 @@
    --disable-fast-perl     disable fast Makefile generation (needs perl)
    --enable-debug=ARG      enables debug symbols (yes|no|full) default=no
    --disable-debug         disables debug output and debug symbols default=no
-@@ -2607,7 +2616,7 @@
- 
- 
- # Define the identity of the package.
-- PACKAGE=kile-2.0.1rc1
-+ PACKAGE=kile-2.0.1~rc1
-  VERSION="3.5.9"
- 
- 
 @@ -2754,6 +2763,29 @@
  
  
@@ -16945,17 +16934,15 @@
  	 X"$mf" : 'X\(//\)[^/]' \| \
 --- a/configure.in
 +++ b/configure.in
-@@ -40,7 +40,9 @@
- AC_ARG_PROGRAM
- 
+@@ -42,6 +42,8 @@
  dnl Automake doc recommends to do this only here. (Janos)
--AM_INIT_AUTOMAKE(kile-2.0.1rc1, "3.5.9") dnl searches for some needed programs
-+AM_INIT_AUTOMAKE(kile-2.0.1~rc1, "3.5.9") dnl searches for some needed programs
-+
-+AM_MAINTAINER_MODE
+ AM_INIT_AUTOMAKE(kile-2.0.1, "3.5.9") dnl searches for some needed programs
  
++AM_MAINTAINER_MODE
++
  KDE_SET_PREFIX
  
+ dnl generate the config header
 --- a/doc/Makefile.in
 +++ b/doc/Makefile.in
 @@ -1,9 +1,9 @@
@@ -17688,7 +17675,7 @@
  SET_MAKE = @SET_MAKE@
  SHELL = @SHELL@
  STRIP = @STRIP@
-@@ -408,7 +413,7 @@
+@@ -409,7 +414,7 @@
  all: docs-am  all-am
  
  .SUFFIXES:
@@ -17697,7 +17684,7 @@
  #>- 	@for dep in $?; do \
  #>- 	  case '$(am__configure_deps)' in \
  #>- 	    *$$dep*) \
-@@ -417,9 +422,9 @@
+@@ -418,9 +423,9 @@
  #>- 	      exit 1;; \
  #>- 	  esac; \
  #>- 	done; \
@@ -17709,7 +17696,7 @@
  #>+ 12
  	@for dep in $?; do \
  	  case '$(am__configure_deps)' in \
-@@ -429,9 +434,9 @@
+@@ -430,9 +435,9 @@
  	      exit 1;; \
  	  esac; \
  	done; \
@@ -17721,7 +17708,7 @@
  	cd $(top_srcdir) && perl admin/am_edit src/kile/complete/tex/Makefile.in
  .PRECIOUS: Makefile
  Makefile: $(srcdir)/Makefile.in $(top_builddir)/config.status
-@@ -446,9 +451,9 @@
+@@ -447,9 +452,9 @@
  $(top_builddir)/config.status: $(top_srcdir)/configure $(CONFIG_STATUS_DEPENDENCIES)
  	cd $(top_builddir) && $(MAKE) $(AM_MAKEFLAGS) am--refresh
  
@@ -17733,16 +17720,16 @@
  	cd $(top_builddir) && $(MAKE) $(AM_MAKEFLAGS) am--refresh
  
  mostlyclean-libtool:
-@@ -614,7 +619,7 @@
+@@ -615,7 +620,7 @@
  .NOEXPORT:
  
  #>+ 2
--KDE_DIST=scrlfile.cwl fancyunits_small-fractions.cwl pstricks.cwl attachfile.cwl beamerseminar.cwl pst-plot.cwl varioref.cwl pst-blur.cwl manyfoot.cwl layout.cwl setspace.cwl class-beamer.cwl tex.cwl amsbsy.cwl pst-3d.cwl doi.cwl latex-document.cwl supertabular.cwl scrpage2.cwl fancyunits-per.cwl coordsys.cwl acronym.cwl longtable.cwl pst-node.cwl beamertexpower.cwl amsmath.cwl fancybox.cwl braket.cwl logsys.cwl psfrag.cwl amssymb.cwl pst-text.cwl Makefile.in fancyvrb.cwl scraddr.cwl afterpage.cwl subfig.cwl lscape.cwl diagxy.cwl beamerprosper.cwl beamerfoils.cwl currvita.cwl cyrillic.cwl amsthm.cwl virginialake.cwl xtab.cwl multicol.cwl fancyunits_big-fractions.cwl class-scrartcl,scrreprt,scrbook.cwl latex-mathsymbols.cwl enumerate.cwl pst-fill.cwl graphicx.cwl fancyunits-base.cwl tabularx.cwl colortbl.cwl svn-multi.cwl pst-coil.cwl class-scrlttr2.cwl textcomp.cwl fancyunits-np.cwl import.cwl verse.cwl mdwlist.cwl amsfonts.cwl calc.cwl ifthen.cwl hyperref.cwl jurabib.cwl rotating.cwl pst-tree.cwl xltxtra.cwl booktabs.cwl yfonts.cwl class-letter.cwl scrdate.cwl url.cwl listings.cwl CMakeLists.txt scrtime.cwl latex-l2tabu.cwl svninfo.cwl color.cwl fancyunits_medium-fractions.cwl latex-dev.cwl fontspec.cwl fancyhdr.cwl pst-eps.cwl pst-char.cwl xifthen.cwl latex-209.cwl array.cwl Makefile.am pdfpages.cwl multido.cwl 
-+KDE_DIST=scrlfile.cwl fancyunits_small-fractions.cwl pstricks.cwl beamerseminar.cwl attachfile.cwl pst-plot.cwl varioref.cwl pst-blur.cwl manyfoot.cwl layout.cwl setspace.cwl class-beamer.cwl tex.cwl amsbsy.cwl pst-3d.cwl doi.cwl latex-document.cwl supertabular.cwl scrpage2.cwl fancyunits-per.cwl coordsys.cwl acronym.cwl longtable.cwl pst-node.cwl beamertexpower.cwl amsmath.cwl fancybox.cwl braket.cwl psfrag.cwl logsys.cwl amssymb.cwl pst-text.cwl Makefile.in fancyvrb.cwl scraddr.cwl afterpage.cwl subfig.cwl lscape.cwl diagxy.cwl beamerprosper.cwl beamerfoils.cwl currvita.cwl cyrillic.cwl amsthm.cwl virginialake.cwl xtab.cwl multicol.cwl fancyunits_big-fractions.cwl class-scrartcl,scrreprt,scrbook.cwl latex-mathsymbols.cwl enumerate.cwl pst-fill.cwl graphicx.cwl fancyunits-base.cwl tabularx.cwl colortbl.cwl svn-multi.cwl pst-coil.cwl class-scrlttr2.cwl import.cwl fancyunits-np.cwl textcomp.cwl verse.cwl mdwlist.cwl amsfonts.cwl calc.cwl ifthen.cwl hyperref.cwl jurabib.cwl rotating.cwl pst-tree.cwl xltxtra.cwl booktabs.cwl yfonts.cwl class-letter.cwl scrdate.cwl url.cwl listings.cwl CMakeLists.txt scrtime.cwl latex-l2tabu.cwl svninfo.cwl color.cwl fancyunits_medium-fractions.cwl latex-dev.cwl fontspec.cwl fancyhdr.cwl pst-eps.cwl pst-char.cwl latex-209.cwl xifthen.cwl array.cwl Makefile.am pdfpages.cwl multido.cwl 
+-KDE_DIST=scrlfile.cwl fancyunits_small-fractions.cwl pstricks.cwl attachfile.cwl beamerseminar.cwl pst-plot.cwl varioref.cwl pst-blur.cwl manyfoot.cwl layout.cwl setspace.cwl class-beamer.cwl tex.cwl amsbsy.cwl pst-3d.cwl amsopn.cwl doi.cwl latex-document.cwl supertabular.cwl scrpage2.cwl fancyunits-per.cwl coordsys.cwl acronym.cwl longtable.cwl pst-node.cwl beamertexpower.cwl amsmath.cwl fancybox.cwl braket.cwl logsys.cwl psfrag.cwl amssymb.cwl pst-text.cwl Makefile.in fancyvrb.cwl scraddr.cwl afterpage.cwl subfig.cwl lscape.cwl diagxy.cwl beamerprosper.cwl beamerfoils.cwl currvita.cwl cyrillic.cwl amsthm.cwl virginialake.cwl xtab.cwl multicol.cwl fancyunits_big-fractions.cwl class-scrartcl,scrreprt,scrbook.cwl latex-mathsymbols.cwl enumerate.cwl pst-fill.cwl graphicx.cwl fancyunits-base.cwl tabularx.cwl colortbl.cwl svn-multi.cwl pst-coil.cwl class-scrlttr2.cwl textcomp.cwl fancyunits-np.cwl import.cwl verse.cwl mdwlist.cwl amsfonts.cwl calc.cwl ifthen.cwl hyperref.cwl jurabib.cwl rotating.cwl pst-tree.cwl xltxtra.cwl booktabs.cwl yfonts.cwl class-letter.cwl scrdate.cwl url.cwl listings.cwl CMakeLists.txt scrtime.cwl latex-l2tabu.cwl svninfo.cwl color.cwl fancyunits_medium-fractions.cwl latex-dev.cwl fontspec.cwl fancyhdr.cwl pst-eps.cwl pst-char.cwl xifthen.cwl latex-209.cwl array.cwl Makefile.am pdfpages.cwl multido.cwl 
++KDE_DIST=scrlfile.cwl fancyunits_small-fractions.cwl pstricks.cwl beamerseminar.cwl attachfile.cwl pst-plot.cwl varioref.cwl pst-blur.cwl manyfoot.cwl layout.cwl setspace.cwl class-beamer.cwl tex.cwl amsbsy.cwl pst-3d.cwl amsopn.cwl doi.cwl latex-document.cwl supertabular.cwl scrpage2.cwl fancyunits-per.cwl coordsys.cwl acronym.cwl longtable.cwl pst-node.cwl beamertexpower.cwl amsmath.cwl fancybox.cwl braket.cwl psfrag.cwl logsys.cwl amssymb.cwl pst-text.cwl Makefile.in fancyvrb.cwl scraddr.cwl afterpage.cwl subfig.cwl lscape.cwl diagxy.cwl beamerprosper.cwl beamerfoils.cwl currvita.cwl cyrillic.cwl amsthm.cwl virginialake.cwl xtab.cwl multicol.cwl fancyunits_big-fractions.cwl class-scrartcl,scrreprt,scrbook.cwl latex-mathsymbols.cwl enumerate.cwl pst-fill.cwl graphicx.cwl fancyunits-base.cwl tabularx.cwl colortbl.cwl svn-multi.cwl pst-coil.cwl class-scrlttr2.cwl import.cwl fancyunits-np.cwl textcomp.cwl verse.cwl mdwlist.cwl amsfonts.cwl calc.cwl ifthen.cwl hyperref.cwl jurabib.cwl rotating.cwl pst-tree.cwl xltxtra.cwl booktabs.cwl yfonts.cwl class-letter.cwl scrdate.cwl url.cwl listings.cwl CMakeLists.txt scrtime.cwl latex-l2tabu.cwl svninfo.cwl color.cwl fancyunits_medium-fractions.cwl latex-dev.cwl fontspec.cwl fancyhdr.cwl pst-eps.cwl pst-char.cwl latex-209.cwl xifthen.cwl array.cwl Makefile.am pdfpages.cwl multido.cwl 
  
  #>+ 2
  docs-am:
-@@ -629,9 +634,9 @@
+@@ -630,9 +635,9 @@
  	      exit 1;; \
  	  esac; \
  	done; \
