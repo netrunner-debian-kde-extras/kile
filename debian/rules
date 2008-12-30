@@ -1,0 +1,15 @@
+#!/usr/bin/make -f
+
+include debian/cdbs/kde.mk
+
+DEB_INSTALL_MANPAGES_kile := debian/kile.1
+
+install/kile::
+	# Install pixmap
+	install -D -p -m0644 debian/kile.xpm debian/kile/usr/share/pixmaps/kile.xpm
+
+	chmod +x debian/kile/usr/share/kde4/apps/kile/test/runTests.sh
+	chmod +x debian/kile/usr/share/kde4/apps/kconf_update/kile*_upd.pl
+	find debian -type f -name bibtex.xml | xargs rm -f
+	find debian -type f -name latex.xml | xargs rm -f
+
