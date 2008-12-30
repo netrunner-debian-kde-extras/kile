@@ -4,7 +4,7 @@ Priority: optional
 Maintainer: Debian KDE Extras Team <pkg-kde-extras@lists.alioth.debian.org>
 Uploaders: Fathi Boudra <fabo@debian.org>, Mark Purcell <msp@debian.org>
 Build-Depends: cdbs, debhelper (>= 6), quilt, kdelibs4-dev, pkg-config
-Standards-Version: 3.7.3
+Standards-Version: 3.8.0
 Vcs-Browser: http://svn.debian.org/wsvn/pkg-kde/kde-extras/kile/trunk
 Vcs-Svn: svn://svn.debian.org/pkg-kde/kde-extras/kile/trunk
 Homepage: http://kile.sourceforge.net
@@ -12,7 +12,7 @@ Homepage: http://kile.sourceforge.net
 Package: kile
 Architecture: any
 Section: tex
-Depends: ${shlibs:Depends}, konsole, texlive-latex-base
+Depends: ${shlibs:Depends}, ${misc:Depends}, konsole, texlive-latex-base
 Recommends: kdvi, kghostview, kpdf, dvipng
 Suggests: gbib, latex2html, pybliographer, xfig, kile-i18n, gv
 Conflicts: ktexmaker2 (<< 1.8)
@@ -34,7 +34,7 @@ Description: KDE Integrated LaTeX Environment
 Package: kile-i18n-ar
 Architecture: all
 Section: tex
-Depends: kile (>= ${source:Version})
+Depends: ${misc:Depends}, kile (>= ${source:Version})
 Recommends: kde-i18n-ar
 Conflicts: kile-i18n (<< 1:1.9.3-3)
 Replaces: kile (<< 1:1.7.1), kile-i18n (<< 1:1.9.3-3)
@@ -45,7 +45,7 @@ Description: Arabic (ar) translations for Kile
 Package: kile-i18n-bg
 Architecture: all
 Section: tex
-Depends: kile (>= ${source:Version})
+Depends: ${misc:Depends}, kile (>= ${source:Version})
 Recommends: kde-i18n-bg
 Conflicts: kile-i18n (<< 1:1.9.3-3)
 Replaces: kile (<< 1:1.7.1), kile-i18n (<< 1:1.9.3-3)
@@ -56,7 +56,7 @@ Description: Bulgarian (bg) translations for Kile
 Package: kile-i18n-br
 Architecture: all
 Section: tex
-Depends: kile (>= ${source:Version})
+Depends: ${misc:Depends}, kile (>= ${source:Version})
 Recommends: kde-i18n-br
 Conflicts: kile-i18n (<< 1:1.9.3-3)
 Replaces: kile (<< 1:1.7.1), kile-i18n (<< 1:1.9.3-3)
@@ -67,7 +67,7 @@ Description: Brazilian (br) translations for Kile
 Package: kile-i18n-ca
 Architecture: all
 Section: tex
-Depends: kile (>= ${source:Version})
+Depends: ${misc:Depends}, kile (>= ${source:Version})
 Recommends: kde-i18n-ca
 Conflicts: kile-i18n (<< 1:1.9.3-3)
 Replaces: kile (<< 1:1.7.1), kile-i18n (<< 1:1.9.3-3)
@@ -78,7 +78,7 @@ Description: Catalan (ca) translations for Kile
 Package: kile-i18n-cs
 Architecture: all
 Section: tex
-Depends: kile (>= ${source:Version})
+Depends: ${misc:Depends}, kile (>= ${source:Version})
 Recommends: kde-i18n-cs
 Conflicts: kile-i18n (<< 1:1.9.3-3)
 Replaces: kile (<< 1:1.7.1), kile-i18n (<< 1:1.9.3-3)
@@ -89,7 +89,7 @@ Description: Czech (cs) translations for Kile
 Package: kile-i18n-cy
 Architecture: all
 Section: tex
-Depends: kile (>= ${source:Version})
+Depends: ${misc:Depends}, kile (>= ${source:Version})
 Recommends: kde-i18n-cy
 Conflicts: kile-i18n (<< 1:1.9.3-3)
 Replaces: kile (<< 1:1.7.1), kile-i18n (<< 1:1.9.3-3)
@@ -100,7 +100,7 @@ Description: Welsh (cy) translations for Kile
 Package: kile-i18n-da
 Architecture: all
 Section: tex
-Depends: kile (>= ${source:Version})
+Depends: ${misc:Depends}, kile (>= ${source:Version})
 Recommends: kde-i18n-da
 Conflicts: kile-i18n (<< 1:1.9.3-3)
 Replaces: kile (<< 1:1.7.1), kile-i18n (<< 1:1.9.3-3)
@@ -111,7 +111,7 @@ Description: Danish (da) translations for Kile
 Package: kile-i18n-de
 Architecture: all
 Section: tex
-Depends: kile (>= ${source:Version})
+Depends: ${misc:Depends}, kile (>= ${source:Version})
 Recommends: kde-i18n-de
 Conflicts: kile-i18n (<< 1:1.9.3-3)
 Replaces: kile (<< 1:1.7.1), kile-i18n (<< 1:1.9.3-3)
@@ -122,7 +122,7 @@ Description: German (de) translations for Kile
 Package: kile-i18n-el
 Architecture: all
 Section: tex
-Depends: kile (>= ${source:Version})
+Depends: ${misc:Depends}, kile (>= ${source:Version})
 Recommends: kde-i18n-el
 Conflicts: kile-i18n (<< 1:1.9.3-3)
 Replaces: kile (<< 1:1.7.1), kile-i18n (<< 1:1.9.3-3)
@@ -133,7 +133,7 @@ Description: Greek (el) translations for Kile
 Package: kile-i18n-engb
 Architecture: all
 Section: tex
-Depends: kile (>= ${source:Version})
+Depends: ${misc:Depends}, kile (>= ${source:Version})
 Recommends: kde-i18n-engb
 Conflicts: kile-i18n (<< 1:1.9.3-3)
 Replaces: kile (<< 1:1.7.1), kile-i18n (<< 1:1.9.3-3)
@@ -144,7 +144,7 @@ Description: British English (en_GB) translations for Kile
 Package: kile-i18n-es
 Architecture: all
 Section: tex
-Depends: kile (>= ${source:Version})
+Depends: ${misc:Depends}, kile (>= ${source:Version})
 Recommends: kde-i18n-es
 Conflicts: kile-i18n (<< 1:1.9.3-3)
 Replaces: kile (<< 1:1.7.1), kile-i18n (<< 1:1.9.3-3)
@@ -155,7 +155,7 @@ Description: Spanish (es) translations for Kile
 Package: kile-i18n-et
 Architecture: all
 Section: tex
-Depends: kile (>= ${source:Version})
+Depends: ${misc:Depends}, kile (>= ${source:Version})
 Recommends: kde-i18n-et
 Conflicts: kile-i18n (<< 1:1.9.3-3)
 Replaces: kile (<< 1:1.7.1), kile-i18n (<< 1:1.9.3-3)
@@ -166,7 +166,7 @@ Description: Estonian (et) translations for Kile
 Package: kile-i18n-eu
 Architecture: all
 Section: tex
-Depends: kile (>= ${source:Version})
+Depends: ${misc:Depends}, kile (>= ${source:Version})
 Recommends: kde-i18n-eu
 Conflicts: kile-i18n (<< 1:1.9.3-3)
 Replaces: kile (<< 1:1.7.1), kile-i18n (<< 1:1.9.3-3)
@@ -177,7 +177,7 @@ Description: Basque (eu) translations for Kile
 Package: kile-i18n-fi
 Architecture: all
 Section: tex
-Depends: kile (>= ${source:Version})
+Depends: ${misc:Depends}, kile (>= ${source:Version})
 Recommends: kde-i18n-fi
 Conflicts: kile-i18n (<< 1:1.9.3-3)
 Replaces: kile (<< 1:1.7.1), kile-i18n (<< 1:1.9.3-3)
@@ -188,7 +188,7 @@ Description: Finnish (fi) translations for Kile
 Package: kile-i18n-fr
 Architecture: all
 Section: tex
-Depends: kile (>= ${source:Version})
+Depends: ${misc:Depends}, kile (>= ${source:Version})
 Recommends: kde-i18n-fr
 Conflicts: kile-i18n (<< 1:1.9.3-3)
 Replaces: kile (<< 1:1.7.1), kile-i18n (<< 1:1.9.3-3)
@@ -199,7 +199,7 @@ Description: French (fr) translations for Kile
 Package: kile-i18n-ga
 Architecture: all
 Section: tex
-Depends: kile (>= ${source:Version})
+Depends: ${misc:Depends}, kile (>= ${source:Version})
 Recommends: kde-i18n-ga
 Conflicts: kile-i18n (<< 1:1.9.3-3)
 Replaces: kile (<< 1:1.7.1), kile-i18n (<< 1:1.9.3-3)
@@ -210,7 +210,7 @@ Description: Irish Gaelic (ga) translations for Kile
 Package: kile-i18n-gl
 Architecture: all
 Section: tex
-Depends: kile (>= ${source:Version})
+Depends: ${misc:Depends}, kile (>= ${source:Version})
 Recommends: kde-i18n-gl
 Conflicts: kile-i18n (<< 1:1.9.3-3)
 Replaces: kile (<< 1:1.7.1), kile-i18n (<< 1:1.9.3-3)
@@ -221,7 +221,7 @@ Description: Galician (gl) translations for Kile
 Package: kile-i18n-hi
 Architecture: all
 Section: tex
-Depends: kile (>= ${source:Version})
+Depends: ${misc:Depends}, kile (>= ${source:Version})
 Recommends: kde-i18n-hi
 Conflicts: kile-i18n (<< 1:1.9.3-3)
 Replaces: kile (<< 1:1.7.1), kile-i18n (<< 1:1.9.3-3)
@@ -232,7 +232,7 @@ Description: Hindi (hi) translations for Kile
 Package: kile-i18n-hu
 Architecture: all
 Section: tex
-Depends: kile (>= ${source:Version})
+Depends: ${misc:Depends}, kile (>= ${source:Version})
 Recommends: kde-i18n-hu
 Conflicts: kile-i18n (<< 1:1.9.3-3)
 Replaces: kile (<< 1:1.7.1), kile-i18n (<< 1:1.9.3-3)
@@ -243,7 +243,7 @@ Description: Hungarian (hu) translations for Kile
 Package: kile-i18n-is
 Architecture: all
 Section: tex
-Depends: kile (>= ${source:Version})
+Depends: ${misc:Depends}, kile (>= ${source:Version})
 Recommends: kde-i18n-is
 Conflicts: kile-i18n (<< 1:1.9.3-3)
 Replaces: kile (<< 1:1.7.1), kile-i18n (<< 1:1.9.3-3)
@@ -254,7 +254,7 @@ Description: Icelandic (is) translations for Kile
 Package: kile-i18n-it
 Architecture: all
 Section: tex
-Depends: kile (>= ${source:Version})
+Depends: ${misc:Depends}, kile (>= ${source:Version})
 Recommends: kde-i18n-it
 Conflicts: kile-i18n (<< 1:1.9.3-3)
 Replaces: kile (<< 1:1.7.1), kile-i18n (<< 1:1.9.3-3)
@@ -265,7 +265,7 @@ Description: Italian (it) translations for Kile
 Package: kile-i18n-ja
 Architecture: all
 Section: tex
-Depends: kile (>= ${source:Version})
+Depends: ${misc:Depends}, kile (>= ${source:Version})
 Recommends: kde-i18n-ja
 Conflicts: kile-i18n (<< 1:1.9.3-3)
 Replaces: kile (<< 1:1.7.1), kile-i18n (<< 1:1.9.3-3)
@@ -276,7 +276,7 @@ Description: Japanese (ja) translations for Kile
 Package: kile-i18n-lt
 Architecture: all
 Section: tex
-Depends: kile (>= ${source:Version})
+Depends: ${misc:Depends}, kile (>= ${source:Version})
 Recommends: kde-i18n-lt
 Conflicts: kile-i18n (<< 1:1.9.3-3)
 Replaces: kile (<< 1:1.7.1), kile-i18n (<< 1:1.9.3-3)
@@ -287,7 +287,7 @@ Description: Lithuanian (lt) translations for Kile
 Package: kile-i18n-ms
 Architecture: all
 Section: tex
-Depends: kile (>= ${source:Version})
+Depends: ${misc:Depends}, kile (>= ${source:Version})
 Recommends: kde-i18n-ms
 Conflicts: kile-i18n (<< 1:1.9.3-3)
 Replaces: kile (<< 1:1.7.1), kile-i18n (<< 1:1.9.3-3)
@@ -298,7 +298,7 @@ Description: Malay (ms) translations for Kile
 Package: kile-i18n-mt
 Architecture: all
 Section: tex
-Depends: kile (>= ${source:Version})
+Depends: ${misc:Depends}, kile (>= ${source:Version})
 Conflicts: kile-i18n (<< 1:1.9.3-3)
 Replaces: kile (<< 1:1.7.1), kile-i18n (<< 1:1.9.3-3)
 Provides: kile-i18n
@@ -308,7 +308,7 @@ Description: Maltese (mt) translations for Kile
 Package: kile-i18n-nb
 Architecture: all
 Section: tex
-Depends: kile (>= ${source:Version})
+Depends: ${misc:Depends}, kile (>= ${source:Version})
 Recommends: kde-i18n-nb
 Conflicts: kile-i18n (<< 1:1.9.3-3)
 Replaces: kile (<< 1:1.7.1), kile-i18n (<< 1:1.9.3-3)
@@ -319,7 +319,7 @@ Description: Norwegian Bookmal (nb) translations for Kile
 Package: kile-i18n-nds
 Architecture: all
 Section: tex
-Depends: kile (>= ${source:Version})
+Depends: ${misc:Depends}, kile (>= ${source:Version})
 Recommends: kde-i18n-nds
 Conflicts: kile-i18n (<< 1:1.9.3-3)
 Replaces: kile (<< 1:1.7.1), kile-i18n (<< 1:1.9.3-3)
@@ -330,7 +330,7 @@ Description: Low Saxon (nds) translations for Kile
 Package: kile-i18n-nl
 Architecture: all
 Section: tex
-Depends: kile (>= ${source:Version})
+Depends: ${misc:Depends}, kile (>= ${source:Version})
 Recommends: kde-i18n-nl
 Conflicts: kile-i18n (<< 1:1.9.3-3)
 Replaces: kile (<< 1:1.7.1), kile-i18n (<< 1:1.9.3-3)
@@ -341,7 +341,7 @@ Description: Dutch (nl) translations for Kile
 Package: kile-i18n-nn
 Architecture: all
 Section: tex
-Depends: kile (>= ${source:Version})
+Depends: ${misc:Depends}, kile (>= ${source:Version})
 Recommends: kde-i18n-nn
 Conflicts: kile-i18n (<< 1:1.9.3-3)
 Replaces: kile (<< 1:1.7.1), kile-i18n (<< 1:1.9.3-3)
@@ -352,7 +352,7 @@ Description: Norwegian Nynorsk (nn) translations for Kile
 Package: kile-i18n-pa
 Architecture: all
 Section: tex
-Depends: kile (>= ${source:Version})
+Depends: ${misc:Depends}, kile (>= ${source:Version})
 Recommends: kde-i18n-pa
 Conflicts: kile-i18n (<< 1:1.9.3-3)
 Replaces: kile (<< 1:1.7.1), kile-i18n (<< 1:1.9.3-3)
@@ -363,7 +363,7 @@ Description: Punjabi (pa) translations for Kile
 Package: kile-i18n-pl
 Architecture: all
 Section: tex
-Depends: kile (>= ${source:Version})
+Depends: ${misc:Depends}, kile (>= ${source:Version})
 Recommends: kde-i18n-pl
 Conflicts: kile-i18n (<< 1:1.9.3-3)
 Replaces: kile (<< 1:1.7.1), kile-i18n (<< 1:1.9.3-3)
@@ -374,7 +374,7 @@ Description: Polish (pl) translations for Kile
 Package: kile-i18n-pt
 Architecture: all
 Section: tex
-Depends: kile (>= ${source:Version})
+Depends: ${misc:Depends}, kile (>= ${source:Version})
 Recommends: kde-i18n-pt
 Conflicts: kile-i18n (<< 1:1.9.3-3)
 Replaces: kile (<< 1:1.7.1), kile-i18n (<< 1:1.9.3-3)
@@ -385,7 +385,7 @@ Description: Portuguese (pt) translations for Kile
 Package: kile-i18n-ptbr
 Architecture: all
 Section: tex
-Depends: kile (>= ${source:Version})
+Depends: ${misc:Depends}, kile (>= ${source:Version})
 Recommends: kde-i18n-ptbr
 Conflicts: kile-i18n (<< 1:1.9.3-3)
 Replaces: kile (<< 1:1.7.1), kile-i18n (<< 1:1.9.3-3)
@@ -396,7 +396,7 @@ Description: Brazilian Portuguese (pt_BR) translations for Kile
 Package: kile-i18n-ro
 Architecture: all
 Section: tex
-Depends: kile (>= ${source:Version})
+Depends: ${misc:Depends}, kile (>= ${source:Version})
 Recommends: kde-i18n-ro
 Conflicts: kile-i18n (<< 1:1.9.3-3)
 Replaces: kile (<< 1:1.7.1), kile-i18n (<< 1:1.9.3-3)
@@ -407,7 +407,7 @@ Description: Romanian (ro) translations for Kile
 Package: kile-i18n-ru
 Architecture: all
 Section: tex
-Depends: kile (>= ${source:Version})
+Depends: ${misc:Depends}, kile (>= ${source:Version})
 Recommends: kde-i18n-ru
 Conflicts: kile-i18n (<< 1:1.9.3-3)
 Replaces: kile (<< 1:1.7.1), kile-i18n (<< 1:1.9.3-3)
@@ -418,7 +418,7 @@ Description: Russian (ru) translations for Kile
 Package: kile-i18n-rw
 Architecture: all
 Section: tex
-Depends: kile (>= ${source:Version})
+Depends: ${misc:Depends}, kile (>= ${source:Version})
 Recommends: kde-i18n-rw
 Conflicts: kile-i18n (<< 1:1.9.3-3)
 Replaces: kile (<< 1:1.7.1), kile-i18n (<< 1:1.9.3-3)
@@ -429,7 +429,7 @@ Description: Kinyarwanda (rw) translations for Kile
 Package: kile-i18n-sk
 Architecture: all
 Section: tex
-Depends: kile (>= ${source:Version})
+Depends: ${misc:Depends}, kile (>= ${source:Version})
 Recommends: kde-i18n-sk
 Conflicts: kile-i18n (<< 1:1.9.3-3)
 Replaces: kile (<< 1:1.7.1), kile-i18n (<< 1:1.9.3-3)
@@ -440,7 +440,7 @@ Description: Slovak (sk) translations for Kile
 Package: kile-i18n-sr
 Architecture: all
 Section: tex
-Depends: kile (>= ${source:Version})
+Depends: ${misc:Depends}, kile (>= ${source:Version})
 Recommends: kde-i18n-sr
 Conflicts: kile-i18n (<< 1:1.9.3-3)
 Replaces: kile (<< 1:1.7.1), kile-i18n (<< 1:1.9.3-3)
@@ -451,7 +451,7 @@ Description: Serbian (sr) translations for Kile
 Package: kile-i18n-srlatin
 Architecture: all
 Section: tex
-Depends: kile (>= ${source:Version})
+Depends: ${misc:Depends}, kile (>= ${source:Version})
 Recommends: kde-i18n-srlatin
 Conflicts: kile-i18n (<< 1:1.9.3-3)
 Replaces: kile (<< 1:1.7.1), kile-i18n (<< 1:1.9.3-3)
@@ -462,7 +462,7 @@ Description: Latin Serbian (sr@Latn) translations for Kile
 Package: kile-i18n-sv
 Architecture: all
 Section: tex
-Depends: kile (>= ${source:Version})
+Depends: ${misc:Depends}, kile (>= ${source:Version})
 Recommends: kde-i18n-sv
 Conflicts: kile-i18n (<< 1:1.9.3-3)
 Replaces: kile (<< 1:1.7.1), kile-i18n (<< 1:1.9.3-3)
@@ -473,7 +473,7 @@ Description: Swedish (sv) translations for Kile
 Package: kile-i18n-ta
 Architecture: all
 Section: tex
-Depends: kile (>= ${source:Version})
+Depends: ${misc:Depends}, kile (>= ${source:Version})
 Recommends: kde-i18n-ta
 Conflicts: kile-i18n (<< 1:1.9.3-3)
 Replaces: kile (<< 1:1.7.1), kile-i18n (<< 1:1.9.3-3)
@@ -484,7 +484,7 @@ Description: Tamil (ta) translations for Kile
 Package: kile-i18n-th
 Architecture: all
 Section: tex
-Depends: kile (>= ${source:Version})
+Depends: ${misc:Depends}, kile (>= ${source:Version})
 Recommends: kde-i18n-th
 Conflicts: kile-i18n (<< 1:1.9.3-3)
 Replaces: kile (<< 1:1.7.1), kile-i18n (<< 1:1.9.3-3)
@@ -495,7 +495,7 @@ Description: Thai (th) translations for Kile
 Package: kile-i18n-tr
 Architecture: all
 Section: tex
-Depends: kile (>= ${source:Version})
+Depends: ${misc:Depends}, kile (>= ${source:Version})
 Recommends: kde-i18n-tr
 Conflicts: kile-i18n (<< 1:1.9.3-3)
 Replaces: kile (<< 1:1.7.1), kile-i18n (<< 1:1.9.3-3)
@@ -506,7 +506,7 @@ Description: Turkish (tr) translations for Kile
 Package: kile-i18n-uk
 Architecture: all
 Section: tex
-Depends: kile (>= ${source:Version})
+Depends: ${misc:Depends}, kile (>= ${source:Version})
 Recommends: kde-i18n-uk
 Conflicts: kile-i18n (<< 1:1.9.3-3)
 Replaces: kile (<< 1:1.7.1), kile-i18n (<< 1:1.9.3-3)
@@ -517,7 +517,7 @@ Description: Ukrainian (uk) translations for Kile
 Package: kile-i18n-zhcn
 Architecture: all
 Section: tex
-Depends: kile (>= ${source:Version})
+Depends: ${misc:Depends}, kile (>= ${source:Version})
 Recommends: kde-i18n-zhcn
 Conflicts: kile-i18n (<< 1:1.9.3-3)
 Replaces: kile (<< 1:1.7.1), kile-i18n (<< 1:1.9.3-3)
