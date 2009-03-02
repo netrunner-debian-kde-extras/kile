@@ -1,6 +1,36 @@
-kile (1:2.0.80+svn903157-1) UNRELEASED; urgency=low
+kile (1:2.1.0~svn933829-1) experimental; urgency=low
 
-  * Initial KDE4 release
+  * New svn snapshot:
+    - KDE 4 port
+  * Remove all previous patches. Deprecated
+  * Bump compat/debhelper to 7
+  * Update debian/control:
+    - Update build-depends:
+      - Remove cdbs and pkg-config
+      - Add cmake and pkg-kde-tools
+      - Replace kdelibs4-dev by kdelibs5-dev (>= 4:4.2.0)
+    - Update kile package depends: add texlive-base-bin
+    - Update kile package recommends:
+      - Remove kdvi, kghostview and kpdf
+      - Add asymptote, context, dblatex, dvipdfmx, ghostscript, imagemagick,
+        kbibtex | pybliographer | gbib | jabref, konqueror | iceweasel,
+        latex2html, lilypond, okular | gv, psutils, tex4ht, texlive-metapost,
+        texlive-xetex, zip
+    - Update kile package suggests:
+      - Remove gbib, latex2html, pybliographer, xfig and gv
+      - add kile-doc
+    - Add kile-doc package
+    - Disable kile-i18n for svn snapshots
+  * Update debian/copyright:
+    - Refresh copyright years
+    - Add GPL-3 path
+  * Rename debian/docs to debian/kile.docs and refresh it
+  * Update debian/kile.install: rewrite for KDE4 port
+  * Add debian/postinst for dh_desktop usage
+  * Refresh debian/README.Debian: syntax files are provided by kdelibs5-data
+  * Rewrite debian/rules:
+    - upstream build system is cmake
+    - use debhelper only instead of cdbs
 
  -- Fathi Boudra <fabo@debian.org>  Tue, 30 Dec 2008 14:15:38 +0100
 

@@ -1,0 +1,9 @@
+usr/bin/kile
+usr/share/applications/kde4/kile.desktop
+usr/share/dbus-1/interfaces/net.sourceforge.kile.main.xml
+usr/share/icons/hicolor
+usr/share/kde4/apps/kconf_update
+usr/share/kde4/apps/kile
+usr/share/kde4/config.kcfg/kile.kcfg
+usr/share/mimelink/text/x-kilepr.desktop
+usr/share/pixmaps/kile.xpm

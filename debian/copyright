@@ -19,9 +19,9 @@ Copyright:
 
     © 2003-2005 Jeroen Wijnout <Jeroen.Wijnhout_at_kdemail.net>
     © 2004-2007 Holger Danielsson <holger.danielsson_at_t-online.de>
-    © 2006-2007 Michel Ludwig <michel.ludwig@kdemail.net>
-    © 2005-2007 Thomas Braun <braun@physik.fu-berlin.de>
-    © 2002-2003 Pascal Brachet <pascal.brachet@club-internet.fr>
+    © 2006-2009 Michel Ludwig <michel.ludwig@kdemail.net>
+    © 2005-2009 Thomas Braun <braun@physik.fu-berlin.de>
+    © 2001-2003 Pascal Brachet <pascal.brachet@club-internet.fr>
 
 Copyright for kile grep dialog:
 
@@ -55,13 +55,14 @@ Copyright for kile jscript:
     © 2001, 2003 Peter Kelly <pmk@post.com>
     © 2003 Apple Computer Inc.
 
-Copyright for kile preview widget:
+Copyright for kile preview widget, category combobox and src/dialogs/tabular/*
+source code:
 
-    © Mathias Soeken <msoeken@informatik.uni-bremen.de>
+    © 2004, 2006, 2008 Mathias Soeken <msoeken@informatik.uni-bremen.de>
 
 Copyright for kile file select:
 
-    © Matt Newell
+    © 2001 Matt Newell
 
 License:
 
@@ -80,11 +81,12 @@ License:
     Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301 USA
 
 On Debian systems, the complete text of the GNU General
-Public License can be found in `/usr/share/common-licenses/GPL'.
+Public License can be found in `/usr/share/common-licenses/GPL-2'
+and `/usr/share/common-licenses/GPL-3'.
 
 The Debian packaging is:
 
-    Copyright C) 2008, Fathi Boudra <fabo@debian.org>
+    Copyright (C) 2008-2009, Fathi Boudra <fabo@debian.org>
 
 and is licensed under the GPL, see above.
 
@@ -95,4 +97,3 @@ unmodifiable parts (invariant sections).
 
 On Debian systems, the complete text of the GNU Free Documentation
 License can be found in `/usr/share/common-licenses/GFDL'.
-
