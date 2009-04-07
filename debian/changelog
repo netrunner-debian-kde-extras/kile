@@ -1,8 +1,9 @@
 kile (1:2.1.0~svn949704-1) unstable; urgency=low
 
   * Upload to Sid. New svn snapshot from svn revision 949704.
-  * Add patch 02_tex_doc_location.diff: Fix tex documentation location path.
-  * Add texlive-doc-base to Suggests.
+  * Bump Standards-Version to 3.8.1 (no changes needed)
+  * Add patch 02_tex_doc_location.diff: Fix tex documentation location path
+  * Add texlive-doc-base to Suggests
 
  -- Fathi Boudra <fabo@debian.org>  Tue, 07 Apr 2009 13:23:04 +0200
 
