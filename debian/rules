@@ -1,43 +1,90 @@
 #!/usr/bin/make -f
 
-include /usr/share/cdbs/1/rules/debhelper.mk
-include /usr/share/cdbs/1/class/kde.mk
-include /usr/share/cdbs/1/rules/patchsys-quilt.mk
-include /usr/share/cdbs/1/rules/utils.mk
+# Uncomment this to turn on verbose mode.
+#export DH_VERBOSE=1
 
-DEB_CONFIGURE_SCRIPT_ENV += LDFLAGS="-Wl,--as-needed"
-DEB_DH_INSTALL_ARGS := --sourcedir=debian/tmp
-DEB_INSTALL_MANPAGES_kile := debian/kile.1
+include /usr/share/pkg-kde-tools/makefiles/1/variables.mk
+include /usr/share/quilt/quilt.make
 
-install/kile-i18n-br::
-	-for language in `cd translations; ls -1d */`; do \
-		cd $(CURDIR)/$(DEB_BUILDDIR)/translations/$$language; \
-		$(MAKE) install DESTDIR=$(CURDIR)/debian/kile-i18n-$$language; \
-	done
+DEB_DESTDIR = $(CURDIR)/debian/tmp
 
-	cd $(CURDIR)/$(DEB_BUILDDIR)/translations/en_GB/; \
-	$(MAKE) install DESTDIR=$(CURDIR)/debian/kile-i18n-engb
+builddir/Makefile: $(QUILT_STAMPFN)
+	dh_testdir
 
-	cd $(CURDIR)/$(DEB_BUILDDIR)/translations/pt_BR/; \
-	$(MAKE) install DESTDIR=$(CURDIR)/debian/kile-i18n-ptbr
+	mkdir -p builddir
+	cd builddir && cmake .. \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DCMAKE_C_FLAGS="$(CFLAGS)" \
+		-DCMAKE_LD_FLAGS="-Wl,-z,defs" \
+		-DCMAKE_CXX_FLAGS="$(CXXFLAGS)" \
+		-DCMAKE_SKIP_RPATH=ON \
+		-DCMAKE_VERBOSE_MAKEFILE=ON \
+		$(DEB_CMAKE_KDE4_FLAGS)
 
-	cd $(CURDIR)/$(DEB_BUILDDIR)/translations/sr@Latn/;\
-	$(MAKE) install DESTDIR=$(CURDIR)/debian/kile-i18n-srlatin
+build: build-stamp
+build-stamp: builddir/Makefile
+	dh_testdir
 
-	cd $(CURDIR)/$(DEB_BUILDDIR)/translations/zh_CN/; \
-	$(MAKE) install DESTDIR=$(CURDIR)/debian/kile-i18n-zhcn
+	$(MAKE) -C builddir
 
-install/kile::
+	touch $@
+
+clean: unpatch
+	dh_testdir
+	dh_testroot
+	rm -f build-stamp
+
+	rm -rf builddir
+
+	dh_clean
+
+install: build
+	dh_testdir
+	dh_testroot
+	dh_prep
+	dh_installdirs
+
+	$(MAKE) -C builddir DESTDIR=$(DEB_DESTDIR) install
+
 	# Install pixmap
-	install -D -p -m0644 debian/kile.xpm debian/kile/usr/share/pixmaps/kile.xpm
+	install -D -p -m0644 debian/kile.xpm $(DEB_DESTDIR)/usr/share/pixmaps/kile.xpm
 
-	chmod +x debian/tmp/usr/share/apps/kile/test/runTests.sh
+	# Fix lintian warning: script-not-executable
+	chmod +x $(DEB_DESTDIR)/usr/share/kde4/apps/kile/test/runTests.sh
+	chmod +x $(DEB_DESTDIR)/usr/share/kde4/apps/kconf_update/kile*_upd.pl
 
-clean::
-	rm -rf debian/kile-i18n-*
+	# Syntax files bibtex.xml and latex.xml are provided by kdelibs5-data package.
+	find $(DEB_DESTDIR) -type f -name bibtex.xml | xargs rm -f
+	find $(DEB_DESTDIR) -type f -name latex.xml | xargs rm -f
 
-get-orig-source:
-	@@dh_testdir
-	@@[ -d ../tarballs/. ]
-	@@dpatch-get-origtargz ../tarballs
+	# Fix lintian warning: package-contains-readme-for-other-platform-or-distro
+	find $(DEB_DESTDIR) -type f -name README.MacOSX | xargs rm -f
 
+# Build architecture-independent files here.
+binary-indep: install
+# We have nothing to do by default.
+
+# Build architecture-dependent files here.
+binary-arch: install
+	dh_testdir
+	dh_testroot
+	dh_installchangelogs ChangeLog
+	dh_installdocs
+	dh_installexamples
+	dh_install --list-missing
+	dh_installmenu
+	dh_installman debian/kile.1
+	dh_desktop
+	dh_link
+	dh_strip
+	dh_compress --exclude=.docbook
+	dh_fixperms
+	dh_makeshlibs
+	dh_installdeb
+	dh_shlibdeps
+	dh_gencontrol
+	dh_md5sums
+	dh_builddeb
+
+binary: binary-indep binary-arch
+.PHONY: build clean binary-indep binary-arch binary install 

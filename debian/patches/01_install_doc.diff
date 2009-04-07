@@ -1,0 +1,12 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -105,7 +105,8 @@ ENDIF(  EXISTS ${kile_SOURCE_DIR}/doc OR
+ IF( EXISTS ${kile_SOURCE_DIR}/doc )
+ 	IF( KDE4_MEINPROC_EXECUTABLE )
+ 		MESSAGE( STATUS "Building standard documentation")
+-		KILE_ADD_DOCBOOK_DIRECTORY( kile_DOCUMENTATION_SOURCES doc index.docbook en )
++		ADD_SUBDIRECTORY( doc )
++        #KILE_ADD_DOCBOOK_DIRECTORY( kile_DOCUMENTATION_SOURCES doc index.docbook en )
+ 	ENDIF( KDE4_MEINPROC_EXECUTABLE )
+ ELSE( EXISTS ${kile_SOURCE_DIR}/doc )
+ 	MESSAGE( STATUS "Not building standard documentation")

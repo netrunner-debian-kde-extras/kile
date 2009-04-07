@@ -1,8 +1,52 @@
+kile (1:2.1.0~svn949704-1) unstable; urgency=low
+
+  * Upload to Sid. New svn snapshot from svn revision 949704.
+  * Add patch 02_tex_doc_location.diff: Fix tex documentation location path.
+  * Add texlive-doc-base to Suggests.
+
+ -- Fathi Boudra <fabo@debian.org>  Tue, 07 Apr 2009 13:23:04 +0200
+
+kile (1:2.1.0~svn933829-1) experimental; urgency=low
+
+  * New svn snapshot:
+    - KDE 4 port
+  * Remove all previous patches. Deprecated
+  * Bump compat/debhelper to 7
+  * Update debian/control:
+    - Update build-depends:
+      - Remove cdbs and pkg-config
+      - Add cmake and pkg-kde-tools
+      - Replace kdelibs4-dev by kdelibs5-dev (>= 4:4.2.0)
+    - Update kile package depends: add texlive-base-bin
+    - Update kile package recommends:
+      - Remove kdvi, kghostview and kpdf
+      - Add asymptote, context, dblatex, dvipdfmx, ghostscript, imagemagick,
+        kbibtex | pybliographer | gbib | jabref, konqueror | iceweasel,
+        latex2html, lilypond, okular | gv, psutils, tex4ht, texlive-metapost,
+        texlive-xetex, zip
+    - Update kile package suggests:
+      - Remove gbib, latex2html, pybliographer, xfig and gv
+      - add kile-doc
+    - Add kile-doc package
+    - Disable kile-i18n for svn snapshots
+  * Update debian/copyright:
+    - Refresh copyright years
+    - Add GPL-3 path
+  * Rename debian/docs to debian/kile.docs and refresh it
+  * Update debian/kile.install: rewrite for KDE4 port
+  * Add debian/postinst for dh_desktop usage
+  * Refresh debian/README.Debian: syntax files are provided by kdelibs5-data
+  * Rewrite debian/rules:
+    - upstream build system is cmake
+    - use debhelper only instead of cdbs
+
+ -- Fathi Boudra <fabo@debian.org>  Tue, 30 Dec 2008 14:15:38 +0100
+
 kile (1:2.0.3-1) unstable; urgency=low
 
   * New upstream release (Closes: #484146, #489618)
   * Bump Standards-Version to 3.8.0 (no changes needed)
-  * Fix lintian warning: debhelper-but-no-misc-depends.
+  * Fix lintian warning: debhelper-but-no-misc-depends
 
  -- Fathi Boudra <fabo@debian.org>  Tue, 30 Dec 2008 12:20:57 +0100
 

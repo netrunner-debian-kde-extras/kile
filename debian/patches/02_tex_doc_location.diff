@@ -1,0 +1,11 @@
+--- a/src/kile.kcfg
++++ b/src/kile.kcfg
+@@ -282,7 +282,7 @@
+ 	<group name="Help">
+ 		<entry name="location" type="String">
+ 			<label>Location of the TeX documentation.</label>
+-			<default>/usr/share/texmf/doc</default>
++                        <default>/usr/share/doc/texlive-doc</default>
+ 		</entry>
+ 		<entry name="use" type="Int">
+ 			<label>Use the system's TeX reference for the contextual help.</label>
