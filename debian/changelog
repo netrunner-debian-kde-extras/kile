@@ -1,3 +1,9 @@
+kile (1:2.1.0~svn963524-1) unstable; urgency=low
+
+  * New svn snapshot from svn revision 963524. (Closes: #526582)
+
+ -- Fathi Boudra <fabo@debian.org>  Thu, 07 May 2009 08:11:20 +0200
+
 kile (1:2.1.0~svn949704-1) unstable; urgency=low
 
   * Upload to Sid. New svn snapshot from svn revision 949704.
