@@ -1,6 +1,11 @@
 kile (1:2.1.0~svn963524-1) unstable; urgency=low
 
-  * New svn snapshot from svn revision 963524. (Closes: #526582)
+  * New svn snapshot from svn revision 963524:
+    - Fix opening configure shortcuts window pins CPU at 100% (Closes: #519746)
+    - Fix inverse dvi search causes status bar corruption (Closes: #522599)
+    - Fix provides an empty path when executing external programs
+      (Closes: #526582)
+  * Update debian/kile.docs: remove Building-with-cmake.txt file
 
  -- Fathi Boudra <fabo@debian.org>  Thu, 07 May 2009 08:11:20 +0200
 
