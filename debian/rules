@@ -74,7 +74,6 @@ binary-arch: install
 	dh_install --list-missing
 	dh_installmenu
 	dh_installman debian/kile.1
-	dh_desktop
 	dh_link
 	dh_strip
 	dh_compress --exclude=.docbook
