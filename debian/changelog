@@ -1,3 +1,18 @@
+kile (1:2.1.0~svn981319beta1-1) unstable; urgency=low
+
+  * New upstream release 2.1 beta 1 - svn r981319 (Closes:#533204):
+    - Fix opening configure shortcuts window pins CPU at 100% (Closes: #519746)
+    - Fix does not let user input '^' character (Closes: #519905)
+    - Fix does not save custom shortcuts (Closes: #528831)
+  * Update debian/control:
+    - Bump kdelibs5-dev build dependency to 4.2.4
+    - Bump Standards-Version to 3.8.2 (no changes needed)
+    - Add spell-check dictionary Suggests: aspell | ispell | hspell
+  * Update debian/kile.docs: remove TODO* files
+  * Cleanup debian/rules: use dh. Thanks to debhelper 7
+
+ -- Fathi Boudra <fabo@debian.org>  Sun, 21 Jun 2009 11:30:24 +0200
+
 kile (1:2.1.0~svn963524-1) unstable; urgency=low
 
   * New svn snapshot from svn revision 963524:

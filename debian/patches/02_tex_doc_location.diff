@@ -7,5 +7,5 @@
 -			<default>/usr/share/texmf/doc</default>
 +                        <default>/usr/share/doc/texlive-doc</default>
  		</entry>
- 		<entry name="use" type="Int">
- 			<label>Use the system's TeX reference for the contextual help.</label>
+ 		<entry name="kilerefs" type="Bool">
+ 			<label>Use the Kile LaTeX reference for the contextual help.</label>

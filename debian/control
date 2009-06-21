@@ -4,8 +4,8 @@ Priority: optional
 Maintainer: Debian KDE Extras Team <pkg-kde-extras@lists.alioth.debian.org>
 Uploaders: Fathi Boudra <fabo@debian.org>, Mark Purcell <msp@debian.org>
 Build-Depends: quilt, debhelper (>= 7), cmake, pkg-kde-tools,
- kdelibs5-dev (>= 4:4.2.0)
-Standards-Version: 3.8.1
+ kdelibs5-dev (>= 4:4.2.4)
+Standards-Version: 3.8.2
 Homepage: http://kile.sourceforge.net
 Vcs-Browser: http://svn.debian.org/wsvn/pkg-kde/kde-extras/kile/trunk
 Vcs-Svn: svn://svn.debian.org/pkg-kde/kde-extras/kile/trunk
@@ -18,7 +18,8 @@ Recommends: asymptote, context, dblatex, dvipdfmx, dvipng, ghostscript,
  imagemagick, kbibtex | pybliographer | gbib | jabref, konqueror | iceweasel,
  latex2html, lilypond, okular | gv, psutils, tex4ht, texlive-metapost,
  texlive-xetex, zip
-Suggests: kile-doc, kile-i18n, texlive-doc-base
+Suggests: kile-doc, kile-i18n, texlive-doc-base,
+ aspell | ispell | hspell
 Conflicts: ktexmaker2 (<< 1.8)
 Replaces: ktexmaker2 (<< 1.8)
 Description: KDE Integrated LaTeX Environment

@@ -1,17 +1,14 @@
 #!/usr/bin/make -f
 
-# Uncomment this to turn on verbose mode.
-#export DH_VERBOSE=1
-
 include /usr/share/pkg-kde-tools/makefiles/1/variables.mk
-include /usr/share/quilt/quilt.make
 
 DEB_DESTDIR = $(CURDIR)/debian/tmp
 
-builddir/Makefile: $(QUILT_STAMPFN)
-	dh_testdir
+%:
+	dh --with quilt $@
 
-	mkdir -p builddir
+override_dh_auto_configure:
+	mkdir builddir
 	cd builddir && cmake .. \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DCMAKE_C_FLAGS="$(CFLAGS)" \
@@ -21,29 +18,15 @@ builddir/Makefile: $(QUILT_STAMPFN)
 		-DCMAKE_VERBOSE_MAKEFILE=ON \
 		$(DEB_CMAKE_KDE4_FLAGS)
 
-build: build-stamp
-build-stamp: builddir/Makefile
-	dh_testdir
 
+override_dh_auto_build:
 	$(MAKE) -C builddir
 
-	touch $@
 
-clean: unpatch
-	dh_testdir
-	dh_testroot
-	rm -f build-stamp
-
+override_dh_auto_clean:
 	rm -rf builddir
 
-	dh_clean
-
-install: build
-	dh_testdir
-	dh_testroot
-	dh_prep
-	dh_installdirs
-
+override_dh_auto_install:
 	$(MAKE) -C builddir DESTDIR=$(DEB_DESTDIR) install
 
 	# Install pixmap
@@ -59,31 +42,3 @@ install: build
 
 	# Fix lintian warning: package-contains-readme-for-other-platform-or-distro
 	find $(DEB_DESTDIR) -type f -name README.MacOSX | xargs rm -f
-
-# Build architecture-independent files here.
-binary-indep: install
-# We have nothing to do by default.
-
-# Build architecture-dependent files here.
-binary-arch: install
-	dh_testdir
-	dh_testroot
-	dh_installchangelogs ChangeLog
-	dh_installdocs
-	dh_installexamples
-	dh_install --list-missing
-	dh_installmenu
-	dh_installman debian/kile.1
-	dh_link
-	dh_strip
-	dh_compress --exclude=.docbook
-	dh_fixperms
-	dh_makeshlibs
-	dh_installdeb
-	dh_shlibdeps
-	dh_gencontrol
-	dh_md5sums
-	dh_builddeb
-
-binary: binary-indep binary-arch
-.PHONY: build clean binary-indep binary-arch binary install 
