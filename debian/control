@@ -3,9 +3,9 @@ Section: tex
 Priority: optional
 Maintainer: Debian KDE Extras Team <pkg-kde-extras@lists.alioth.debian.org>
 Uploaders: Fathi Boudra <fabo@debian.org>, Mark Purcell <msp@debian.org>
-Build-Depends: quilt, debhelper (>= 7), cmake, pkg-kde-tools,
- kdelibs5-dev (>= 4:4.2.4)
-Standards-Version: 3.8.2
+Build-Depends: quilt (>= 0.46-7), debhelper (>= 7.3.12), cmake, pkg-kde-tools (>= 0.4.11),
+ kdelibs5-dev (>= 4:4.3.0)
+Standards-Version: 3.8.3
 Homepage: http://kile.sourceforge.net
 Vcs-Browser: http://svn.debian.org/wsvn/pkg-kde/kde-extras/kile/trunk
 Vcs-Svn: svn://svn.debian.org/pkg-kde/kde-extras/kile/trunk
@@ -16,7 +16,7 @@ Depends: ${shlibs:Depends}, ${misc:Depends},
  konsole, texlive-base-bin, texlive-latex-base
 Recommends: asymptote, context, dblatex, dvipdfmx, dvipng, ghostscript,
  imagemagick, kbibtex | pybliographer | gbib | jabref, konqueror | iceweasel,
- latex2html, lilypond, okular | gv, psutils, tex4ht, texlive-metapost,
+ latex2html, lilypond, okular | evince | gv, psutils, tex4ht, texlive-metapost,
  texlive-xetex, zip
 Suggests: kile-doc, kile-i18n, texlive-doc-base,
  aspell | ispell | hspell

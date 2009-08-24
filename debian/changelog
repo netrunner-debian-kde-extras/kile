@@ -1,3 +1,17 @@
+kile (1:2.1.0~svn1014763beta2-1) unstable; urgency=low
+
+  * New upstream release 2.1 beta 2 - svn r1014763. (Closes: #543282)
+  * Update debian/control:
+    - Bump build dependencies versions (quilt, debhelper, pkg-kde-tools and
+      kdelibs5-dev).
+    - Bump Standards-Version from 3.8.2 to 3.8.2 (add debian/README.source).
+    - Add evince to Recommends field.
+  * Update debian/rules:
+    - Cleanup targets since dh support cmake.
+  * Remove debian/postinst file - useless.
+
+ -- Fathi Boudra <fabo@debian.org>  Mon, 24 Aug 2009 09:52:01 +0200
+
 kile (1:2.1.0~svn981319beta1-1) unstable; urgency=low
 
   * New upstream release 2.1 beta 1 - svn r981319 (Closes:#533204):
