@@ -1,3 +1,9 @@
+kile (1:2.1.0~svn1055250beta3-1) UNRELEASED; urgency=low
+
+  * New upstream release 2.1 beta 3 - svn r1055250. (Closes: #566240)
+
+ -- Fathi Boudra <fabo@debian.org>  Mon, 08 Feb 2010 16:13:31 +0100
+
 kile (1:2.1.0~svn1014763beta2-1) unstable; urgency=low
 
   * New upstream release 2.1 beta 2 - svn r1014763. (Closes: #543282)
