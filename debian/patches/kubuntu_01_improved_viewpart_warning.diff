@@ -1,0 +1,10 @@
+--- a/src/kilelauncher.cpp
++++ b/src/kilelauncher.cpp
+@@ -360,6 +360,7 @@ namespace KileTool {
+ 		KPluginFactory *factory = pluginLoader.factory();
+ 		if (!factory) {
+ 			emit(message(Error, i18n("Could not find the %1 library.", m_libName)));
++			emit(message(Error, i18n("This is possibly due to old tools configuration; you can restore default tools configuration in Settings->Configure Kile->Tools->Build->Restore Default Tools.")));
+ 			return false;
+ 		}
+ 

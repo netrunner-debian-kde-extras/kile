@@ -1,0 +1,19 @@
+--- a/src/data/kilestdtools.rc
++++ b/src/data/kilestdtools.rc
+@@ -537,16 +537,6 @@ options='%source'
+ from=bib
+ to=bib
+ 
+-[Tool/ViewBib/KBibTex (embedded)]
+-type=Part
+-class=ViewBib
+-libName=kbibtexpart
+-className=KBibTeXPart
+-liboptions='%source'
+-state=Viewer
+-from=bib
+-to=bib
+-
+ [Tool/ViewHTML/Embedded Viewer]
+ type=DocPart
+ class=ViewHTML

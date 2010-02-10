@@ -1,6 +1,22 @@
-kile (1:2.1.0~svn1055250beta3-1) UNRELEASED; urgency=low
+kile (1:2.1.0~svn1055250beta3-1) unstable; urgency=low
 
   * New upstream release 2.1 beta 3 - svn r1055250. (Closes: #566240)
+  * Update debian/control:
+    - Bump build dependencies versions (debhelper, pkg-kde-tools and
+      kdelibs5-dev).
+    - Remove quilt build dependency.
+    - Bump Standards-Version from 3.8.3 to 3.8.4 (no changes needed).
+  * Update debian/rules:
+    - Enable parallel build (pass --parallel option to dh).
+    - Use kde sequence addon (pass --with kde option to dh).
+    - Add override_dh_compress to avoid docbook files compression.
+  * Merge from Ubuntu:
+    - Add debian/patches/kubuntu_01_improved_viewpart_warning.diff
+      instruct how to restore tools config; as an out-dated configuration from
+      pre KDE 4 is the most likely cause of the embedded viewer failing.
+    - Add kubuntu_02_disable_embedded_kbibtex.diff
+      KBibTex-part isn't available for KDE 4 and KBibTex porting does not look
+      to happen anytime soon, so disable the Embedded KBibTex option for now.
 
  -- Fathi Boudra <fabo@debian.org>  Mon, 08 Feb 2010 16:13:31 +0100
 
