@@ -1,4 +1,6 @@
+00_root_document_not_detected_kde_bug_233667.diff
 01_install_doc.diff
 02_tex_doc_location.diff
+03_mime_install_dir.diff
 kubuntu_01_improved_viewpart_warning.diff
 kubuntu_02_disable_embedded_kbibtex.diff

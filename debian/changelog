@@ -1,3 +1,12 @@
+kile (1:2.1.0~svn1112278beta4-1) unstable; urgency=low
+
+  * New upstream release 2.1 beta 4 - svn 1112278. (Closes: #578021)
+  * Add 03_mime_install_dir.diff patch: fix mime install dir. (Closes: #572462)
+  * Add 00_root_document_not_detected_kde_bug_233667.diff patch:
+    Document not detected as Latex root document when opening project.
+
+ -- Fathi Boudra <fabo@debian.org>  Fri, 16 Apr 2010 12:08:37 +0300
+
 kile (1:2.1.0~svn1055250beta3-1) unstable; urgency=low
 
   * New upstream release 2.1 beta 3 - svn r1055250. (Closes: #566240)

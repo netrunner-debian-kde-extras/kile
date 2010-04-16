@@ -1,6 +1,6 @@
 --- a/src/data/kilestdtools.rc
 +++ b/src/data/kilestdtools.rc
-@@ -537,16 +537,6 @@ options='%source'
+@@ -531,16 +531,6 @@ options='%source'
  from=bib
  to=bib
  

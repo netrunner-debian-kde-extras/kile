@@ -1,6 +1,6 @@
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -105,7 +105,8 @@ ENDIF(  EXISTS ${kile_SOURCE_DIR}/doc OR
+@@ -104,7 +104,8 @@ ENDIF(  EXISTS ${kile_SOURCE_DIR}/doc OR
  IF( EXISTS ${kile_SOURCE_DIR}/doc )
  	IF( KDE4_MEINPROC_EXECUTABLE )
  		MESSAGE( STATUS "Building standard documentation")
