@@ -6,4 +6,4 @@ usr/share/icons/hicolor
 usr/share/kde4/apps/kconf_update
 usr/share/kde4/apps/kile
 usr/share/kde4/config.kcfg/kile.kcfg
-usr/share/mimelnk/text/x-kilepr.desktop
+usr/share/mime/packages/kile.xml

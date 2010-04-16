@@ -1,7 +1,8 @@
 kile (1:2.1.0~svn1112278beta4-1) unstable; urgency=low
 
   * New upstream release 2.1 beta 4 - svn 1112278. (Closes: #578021)
-  * Add 03_mime_install_dir.diff patch: fix mime install dir. (Closes: #572462)
+  * Add 03_mime_install_dir.diff patch: convert the mimetype definitions
+    to the XDG format also remove the old KDE 3 definition. (Closes: #572462)
   * Add 00_root_document_not_detected_kde_bug_233667.diff patch:
     Document not detected as Latex root document when opening project.
 
