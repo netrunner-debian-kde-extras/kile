@@ -1,7 +1,10 @@
 #!/usr/bin/make -f
 
+# Uncomment this to turn on verbose mode.
+#export DH_VERBOSE=1
+
 %:
-	dh --parallel --with kde $@
+	dh $@ --parallel --with kde
 
 override_dh_install:
 	# Fix lintian warning: script-not-executable
@@ -14,8 +17,5 @@ override_dh_install:
 	find debian -type f -name README.MacOSX -delete
 
 	dh_install --list-missing
-
-override_dh_compress:
-	dh_compress -X.docbook
 
 .PHONY: override_dh_auto_test
