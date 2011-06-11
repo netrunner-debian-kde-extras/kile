@@ -1,3 +1,9 @@
+kile (1:2.1-1) UNRELEASED; urgency=low
+
+  * New upstream release.
+
+ -- Fathi Boudra <fabo@debian.org>  Sat, 11 Jun 2011 14:55:19 +0300
+
 kile (1:2.1.0~svn1112278beta4-2) unstable; urgency=low
 
   * Update location of KDE 4 HTML documentation.
