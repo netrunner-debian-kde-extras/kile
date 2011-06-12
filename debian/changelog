@@ -1,6 +1,20 @@
-kile (1:2.1-1) UNRELEASED; urgency=low
+kile (1:2.1.0-1) unstable; urgency=low
 
-  * New upstream release.
+  * New upstream release. (Closes: #630122)
+  * Add kile-l10n package (replace kile-i18n).
+  * Remove patches:
+    - 00_root_document_not_detected_kde_bug_233667.diff - stolen upstream.
+    - 03_mime_install_dir.diff - merged upstream.
+  * Update debian/rules: remove bibtex.xml/latex.xml work around. The files
+    aren't shipped by kile anymore.
+  * Cleanup dependencies (Closes: #625916):
+    - remove from Depends: texlive-base-bin.
+    - add to Recommends: texlive.
+    - demote to Suggests: lilypond, texlive-xetex, asymptote, context, dblatex,
+      latex2html, tex4ht.
+    - remove from Recommends:, okular | evince | gv,
+      kbibtex | pybliographer | gbib | jabref, konqueror | firefox, dvipdfmx,
+      texlive-metapost.
 
  -- Fathi Boudra <fabo@debian.org>  Sat, 11 Jun 2011 14:55:19 +0300
 

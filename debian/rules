@@ -6,16 +6,16 @@
 %:
 	dh $@ --parallel --with kde
 
-override_dh_install:
-	# Fix lintian warning: script-not-executable
-	find debian -type f -name '*.sh' -or -name '*.pl' | xargs chmod +x
-
-	# Syntax files bibtex.xml and latex.xml are provided by kdelibs5-data package.
-	find debian -type f -name bibtex.xml -or -name latex.xml -delete
+override_dh_auto_install:
+	dh_auto_install
 
 	# Fix lintian warning: package-contains-readme-for-other-platform-or-distro
-	find debian -type f -name README.MacOSX -delete
+	rm -f debian/tmp/usr/share/doc/kile/README.MacOSX
 
-	dh_install --list-missing
+	# Fix lintian warning: unknown-locale-code
+	rm -rf debian/tmp/usr/share/locale/x-test
 
-.PHONY: override_dh_auto_test
+	# Fix lintian warning: script-not-executable
+	find debian/tmp -type f -name '*.sh' -or -name '*.pl' | xargs chmod +x
+
+override_dh_auto_test:

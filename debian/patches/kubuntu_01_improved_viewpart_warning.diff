@@ -1,6 +1,6 @@
 --- a/src/kilelauncher.cpp
 +++ b/src/kilelauncher.cpp
-@@ -360,6 +360,7 @@ namespace KileTool {
+@@ -396,6 +396,7 @@ namespace KileTool {
  		KPluginFactory *factory = pluginLoader.factory();
  		if (!factory) {
  			emit(message(Error, i18n("Could not find the %1 library.", m_libName)));

@@ -3,24 +3,33 @@ Section: tex
 Priority: optional
 Maintainer: Debian KDE Extras Team <pkg-kde-extras@lists.alioth.debian.org>
 Uploaders: Fathi Boudra <fabo@debian.org>, Mark Purcell <msp@debian.org>
-Build-Depends: debhelper (>= 7.4.15), cmake, pkg-kde-tools (>= 0.9.0),
- kdelibs5-dev (>= 4:4.4.4), shared-mime-info
-Standards-Version: 3.8.4
+Build-Depends: cmake,
+               debhelper (>= 7.4.15),
+               kdelibs5-dev (>= 4:4.4.4),
+               pkg-kde-tools (>= 0.9.0),
+               shared-mime-info
+Standards-Version: 3.9.2
 Homepage: http://kile.sourceforge.net
 Vcs-Browser: http://svn.debian.org/wsvn/pkg-kde/kde-extras/kile/trunk
 Vcs-Svn: svn://svn.debian.org/pkg-kde/kde-extras/kile/trunk
 
 Package: kile
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends},
- konsole, texlive-base-bin, texlive-latex-base
-Recommends: asymptote, context, dblatex, dvipdfmx, dvipng, ghostscript,
- imagemagick, kbibtex | pybliographer | gbib | jabref, konqueror | iceweasel,
- latex2html, lilypond, okular | evince | gv, psutils, tex4ht, texlive-metapost,
- texlive-xetex, zip
-Suggests: kile-doc, kile-i18n, texlive-doc-base,
- aspell | ispell | hspell
-Conflicts: ktexmaker2 (<< 1.8)
+Depends: konsole, texlive-latex-base, ${misc:Depends}, ${shlibs:Depends}
+Recommends: dvipng, ghostscript, imagemagick, psutils, texlive
+Suggests: aspell | ispell | hspell,
+          asymptote,
+          context,
+          dblatex,
+          kile-doc,
+          kile-l10n,
+          latex2html,
+          lilypond,
+          tex4ht,
+          texlive-doc-base,
+          texlive-xetex,
+          zip
+Breaks: ktexmaker2 (<< 1.8)
 Replaces: ktexmaker2 (<< 1.8)
 Description: KDE Integrated LaTeX Environment
  Kile is a user-friendly LaTeX source editor and TeX shell for KDE.
@@ -39,8 +48,19 @@ Description: KDE Integrated LaTeX Environment
 Package: kile-doc
 Architecture: all
 Section: doc
-Depends: ${shlibs:Depends}, ${misc:Depends}
+Depends: ${misc:Depends}, ${shlibs:Depends}
 Description: KDE Integrated LaTeX Environment (documentation)
  Kile is a user-friendly LaTeX source editor and TeX shell for KDE.
  .
  This package contains the documentation for Kile.
+
+Package: kile-l10n
+Architecture: all
+Section: localization
+Depends: kile (>= ${source:Version}), ${misc:Depends}
+Breaks: kile-i18n (<< 2.1.0-1)
+Replaces: kile-i18n (<< 2.1.0-1)
+Description: KDE Integrated LaTeX Environment (localization)
+ Kile is a user-friendly LaTeX source editor and TeX shell for KDE.
+ .
+ This package contains the translations for Kile.
