@@ -4,6 +4,8 @@ kile (1:2.1.3-1) UNRELEASED; urgency=low
     - Fixes "Please package and upload new upstream" (Closes: #661686)
   * Fix "debian/watch 3-digit version numbers" (Closes: #699610)
   * debian/compat -> 9
+  * kbibtex suitable for KDE4 use - Add to Suggests
+    - Drop kubuntu_02_disable_embedded_kbibtex.diff
 
  -- Mark Purcell <msp@debian.org>  Sun, 14 Apr 2013 12:39:46 +1000
 
