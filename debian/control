@@ -53,6 +53,11 @@ Depends: ${misc:Depends}, ${shlibs:Depends}
 Description: KDE Integrated LaTeX Environment (documentation)
  Kile is a user-friendly LaTeX source editor and TeX shell for KDE.
  .
+ The source editor is a multi-document editor designed for .tex and .bib
+ files.  Menus, wizards and auto-completion are provided to assist with
+ tag insertion and code generation.  A structural view of the document
+ assists with navigation within source files.
+ .
  This package contains the documentation for Kile.
 
 Package: kile-l10n
@@ -63,5 +68,10 @@ Breaks: kile-i18n (<< 2.1.0-1)
 Replaces: kile-i18n (<< 2.1.0-1)
 Description: KDE Integrated LaTeX Environment (localization)
  Kile is a user-friendly LaTeX source editor and TeX shell for KDE.
+ .
+ The source editor is a multi-document editor designed for .tex and .bib
+ files.  Menus, wizards and auto-completion are provided to assist with
+ tag insertion and code generation.  A structural view of the document
+ assists with navigation within source files.
  .
  This package contains the translations for Kile.
