@@ -95,5 +95,11 @@ Documentation License (FDL). They are considered free with regards to the
 Debian Free Software Guidelines (DFSG) because they don't contain any
 unmodifiable parts (invariant sections).
 
+  Version 1.2, November 2002 
+  Copyright (C) 2000,2001,2002  Free Software Foundation, Inc.
+  51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+  Everyone is permitted to copy and distribute verbatim copies
+  of this license document, but changing it is not allowed.
+
 On Debian systems, the complete text of the GNU Free Documentation
-License can be found in `/usr/share/common-licenses/GFDL'.
+License can be found in `/usr/share/common-licenses/GFDL-1.2'.

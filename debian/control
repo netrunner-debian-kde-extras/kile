@@ -8,10 +8,10 @@ Build-Depends: cmake,
                kdelibs5-dev (>= 4:4.4.4),
                pkg-kde-tools (>= 0.9.0),
                shared-mime-info
-Standards-Version: 3.9.2
+Standards-Version: 3.9.4
 Homepage: http://kile.sourceforge.net
-Vcs-Browser: http://svn.debian.org/wsvn/pkg-kde/kde-extras/kile/trunk
-Vcs-Svn: svn://svn.debian.org/pkg-kde/kde-extras/kile/trunk
+Vcs-Browser: http://anonscm.debian.org/viewvc/pkg-kde/kde-extras/kile/trunk 
+Vcs-Svn: svn://anonscm.debian.org/pkg-kde/kde-extras/kile/trunk
 
 Package: kile
 Architecture: any
