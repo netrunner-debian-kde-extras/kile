@@ -3,6 +3,10 @@
 # Uncomment this to turn on verbose mode.
 #export DH_VERBOSE=1
 
+# do NOT run optipng on the icons, this removes the metadata in the latex
+# symbol icons which kile depends on for the symbol table. LP: #772631
+export NO_PNG_PKG_MANGLE=1
+
 %:
 	dh $@ --parallel --with kde
 
