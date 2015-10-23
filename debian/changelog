@@ -7,6 +7,8 @@ kile (4:2.1.3-3) UNRELEASED; urgency=low
   * Add myself to Uploaders with Mark's approval.
   * Moved the repo to git, update Vcs-[Browser Git].
   * Depend upon konsole4-kpart instead of konsole (Closes: #793747).
+  * Add fix_doc_target.patch in order to avoid a FTBFS due to a CMake
+    policy (Closes: #802403).
 
  -- Mark Purcell <msp@debian.org>  Sat, 01 Jun 2013 08:40:14 +1000
 

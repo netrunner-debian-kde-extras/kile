@@ -1,3 +1,4 @@
+fix_doc_target.patch
 01_install_doc.diff
 02_tex_doc_location.diff
 kubuntu_01_improved_viewpart_warning.diff

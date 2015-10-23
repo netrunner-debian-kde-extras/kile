@@ -1,0 +1,24 @@
+Description: mark CMake policy CMP0002 as OLD
+ This makes CMake ignore the policy that forbids two targets with the same
+ name.
+ .
+ This should be fixed at a later point.
+Author: Lisandro Damián Nicanor Pérez Meyer <lisandro@debian.org>
+Bug-Debian: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=802403
+Last-Update: 2015-10-23
+
+---
+ CMakeLists.txt |    2 ++
+ 1 file changed, 2 insertions(+)
+
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -2,6 +2,8 @@ cmake_minimum_required(VERSION 2.6.2)
+ 
+ PROJECT( kile )
+ 
++cmake_policy(SET CMP0002 OLD)
++
+ find_package(KDE4 4.2.0 REQUIRED)
+ include (KDE4Defaults)
+ 
