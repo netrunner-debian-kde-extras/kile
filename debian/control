@@ -2,7 +2,9 @@ Source: kile
 Section: tex
 Priority: optional
 Maintainer: Debian KDE Extras Team <pkg-kde-extras@lists.alioth.debian.org>
-Uploaders: Fathi Boudra <fabo@debian.org>, Mark Purcell <msp@debian.org>, Lisandro Damián Nicanor Pérez Meyer <lisandro@debian.org>
+Uploaders: Fathi Boudra <fabo@debian.org>,
+           Mark Purcell <msp@debian.org>,
+           Lisandro Damián Nicanor Pérez Meyer <lisandro@debian.org>
 Build-Depends: cmake,
                debhelper (>= 9),
                kdelibs5-dev (>= 4:4.4.4),
@@ -10,7 +12,7 @@ Build-Depends: cmake,
                shared-mime-info
 Standards-Version: 3.9.4
 Homepage: http://kile.sourceforge.net
-Vcs-Browser: http://anonscm.debian.org/viewvc/pkg-kde/kde-extras/kile/trunk 
+Vcs-Browser: http://anonscm.debian.org/viewvc/pkg-kde/kde-extras/kile/trunk
 Vcs-Svn: svn://anonscm.debian.org/pkg-kde/kde-extras/kile/trunk
 
 Package: kile
@@ -21,9 +23,9 @@ Suggests: aspell | ispell | hspell,
           asymptote,
           context,
           dblatex,
+          kbibtex,
           kile-doc,
           kile-l10n,
-          kbibtex,
           latex2html,
           lilypond,
           tex4ht,
