@@ -1,4 +1,4 @@
-kile (4:2.1.3-3) UNRELEASED; urgency=low
+kile (4:2.1.3-3) unstable; urgency=low
 
   [ Mark Purcell ]
   * do NOT run optipng on the icons - patch from Philip Muskovac
@@ -11,7 +11,7 @@ kile (4:2.1.3-3) UNRELEASED; urgency=low
     policy (Closes: #802403).
   * Update Standards-Version to 3.9.6, no changes required.
 
- -- Mark Purcell <msp@debian.org>  Sat, 01 Jun 2013 08:40:14 +1000
+ -- Lisandro Damián Nicanor Pérez Meyer <lisandro@debian.org>  Fri, 23 Oct 2015 16:08:24 -0300
 
 kile (4:2.1.3-2) unstable; urgency=low
 
