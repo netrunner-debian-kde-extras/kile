@@ -17,7 +17,7 @@ Vcs-Git: git://anonscm.debian.org/pkg-kde/kde-extras/kile.git
 
 Package: kile
 Architecture: any
-Depends: konsole, texlive-latex-base, ${misc:Depends}, ${shlibs:Depends}
+Depends: konsole4-kpart, texlive-latex-base, ${misc:Depends}, ${shlibs:Depends}
 Recommends: dvipng, ghostscript, imagemagick, psutils, texlive
 Suggests: aspell | ispell | hspell,
           asymptote,
