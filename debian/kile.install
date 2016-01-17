@@ -1,4 +1,3 @@
-debian/kile.xpm usr/share/pixmaps/
 usr/bin/kile
 usr/share/applications/kde4/kile.desktop
 usr/share/dbus-1/interfaces/net.sourceforge.kile.main.xml
