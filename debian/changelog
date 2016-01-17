@@ -2,6 +2,8 @@ kile (4:2.1.3-4) UNRELEASED; urgency=medium
 
   [ Pino Toscano ]
   * Drop menu file and its pixmap, since kile already provides a .desktop file.
+  * Stop installing CODE-FORMATTING-STYLE.txt as documentation, as it is
+    development-related (and thus not interesting for users).
 
  -- Debian KDE Extras Team <pkg-kde-extras@lists.alioth.debian.org>  Sun, 17 Jan 2016 17:38:23 +0100
 
